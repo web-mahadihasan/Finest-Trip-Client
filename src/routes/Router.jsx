@@ -6,6 +6,9 @@ import Register from "../pages/Register/Register";
 import Login from "../pages/Login/Login";
 import AddVisa from "../pages/AddVisa/AddVisa";
 import AllVisa from "../pages/AllVisa/AllVisa";
+import MyAddedVisa from "../pages/MyAddedVisa/MyAddedVisa";
+import MyVisaApplication from "../pages/MyVisaApplication/MyVisaApplication";
+import PrivateRoutes from "./PrivateRoutes";
 
 const Router = createBrowserRouter([
     {
@@ -15,7 +18,8 @@ const Router = createBrowserRouter([
         children: [
             {
                 path: "/",
-                element: <Home/>
+                element: <Home/>,
+                loader: () =>  fetch("http://localhost:3000/visas")
             },
             {
                 path: "/add-visa",
@@ -24,6 +28,14 @@ const Router = createBrowserRouter([
             {
                 path: "/all-visa",
                 element: <AllVisa/>
+            },
+            {
+                path: "/my-added-visa",
+                element: <PrivateRoutes><MyAddedVisa/></PrivateRoutes>
+            },
+            {
+                path: "/my-visa-application",
+                element: <MyVisaApplication/>
             },
             {
                 path: "/auth/register",

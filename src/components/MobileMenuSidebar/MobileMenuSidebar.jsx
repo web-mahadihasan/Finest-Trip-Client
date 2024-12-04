@@ -15,8 +15,8 @@ const MobileMenuSidebar = () => {
         { "path": "/", "element": "Home" },
         { "path": "/all-visa", "element": "All Visas" },
         { "path": "/add-visa", "element": "Add Visa" },
-        { "path": "/my-added-visas", "element": "Added Visas" },
-        { "path": "/my-visa-applications", "element": "Visa Applications" }
+        { "path": "/my-added-visa", "element": "Added Visas" },
+        { "path": "/my-visa-application", "element": "Visa Applications" }
       ]
     return (
         <div className={`absolute lg:hidden z-40 duration-700 min-h-screen ${ openMenu? "top-0 left-0 block" : "-left-[800px] top-0"}`}>
@@ -49,9 +49,9 @@ const MobileMenuSidebar = () => {
                 {/* User Log in & register  */}
                 {
                     user ? <div className="m-3 md:hidden"><NavUserInfo/></div> : (<div className="mt-2 flex items-center">
-                        <Link to={"/auth/register"}><Button variant="filled" className="font-rubik tracking-wider text-xs font-normal bg-primary">Register</Button></Link>
+                        <Link to={"/auth/register"}><Button variant="filled" className="font-rubik tracking-wider text-xs font-normal bg-primary hover:bg-primary-dark duration-300">Register</Button></Link>
                         <div className="divider divider-horizontal font-jost mx-1">or</div>
-                        <Link to={"/auth/login"}><Button variant="filled" className="font-rubik text-white tracking-wider text-xs font-normal bg-primary">Log in</Button></Link>
+                        <Link to={"/auth/login"}><Button variant="filled" className="font-rubik text-white tracking-wider text-xs font-normal bg-primary hover:bg-primary-dark duration-300">Log in</Button></Link>
                     </div>)
                 }
                 {/* More query  */}

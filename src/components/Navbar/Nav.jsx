@@ -1,6 +1,5 @@
 import { Link, NavLink } from "react-router";
 import logo from "../../assets/logo1.png"
-import { GrAppsRounded } from "react-icons/gr";
 import { HiMenuAlt3 } from "react-icons/hi";
 import { Button } from "@material-tailwind/react";
 import NavUserInfo from "../NavUserInfo/NavUserInfo";
@@ -9,6 +8,7 @@ import { useAppContext } from "../../provider/AppContext";
 import MobileMenuSidebar from "../MobileMenuSidebar/MobileMenuSidebar";
 import { LuSunMoon } from "react-icons/lu";
 import { BsMoon } from "react-icons/bs";
+import appsSvg from "../../assets/app.svg"
 
 const Nav = () => {
     const {user} = useAuth();
@@ -17,17 +17,17 @@ const Nav = () => {
         { "path": "/", "element": "Home" },
         { "path": "/all-visa", "element": "All Visas" },
         { "path": "/add-visa", "element": "Add Visa" },
-        { "path": "/my-added-visas", "element": "Added Visas" },
-        { "path": "/my-visa-applications", "element": "Visa Applications" }
+        { "path": "/my-added-visa", "element": "Added Visas" },
+        { "path": "/my-visa-application", "element": "Visa Applications" }
       ]
             
     return (
-        <div className="w-full border-b border-base-300 shadow-md bg-white z-50">
-            <div className="flex py-4 items-center justify-between container mx-auto">
+        <div className=" w-full border-b border-base-200 shadow-md bg-white z-50">
+            <div className="flex py-4 items-center justify-between container mx-auto px-4 md:px-0">
                 <div className="flex items-center gap-2">
                     <img src={logo} alt="" className="w-12" />
-                    <h3 className="text-2xl md:text-4xl mb-3 font-black tracking-wide text-black font-inter text-center">
-                        Finest<span className="text-customGreen">Trip</span>
+                    <h3 className="text-2xl md:text-3xl xl:text-4xl font-black tracking-wide text-black font-inter text-center">
+                        Finest<span className="text-primary">Trip</span>
                     </h3>
                 </div>
                 {/* Nav Links  */}
@@ -41,14 +41,14 @@ const Nav = () => {
                     </ul>
                 </div>
                 <div className="flex items-center gap-3">
-                    <div className="px-2 py-2 cursor-pointer">
-                        <GrAppsRounded size={28}/>
+                    <div className="px-2 py-2 cursor-pointer border border-transparent hover:border-gray-500 duration-500 rounded-full hover:bg-base-300">
+                        <img src={appsSvg} alt="" />
                     </div>
 
                     {/* Theme control  */}
                     <div>
                     <button className="">
-                        <label className="swap swap-rotate p-2 border border-transparent hover:border-gray-500 duration-300 rounded-full hover:bg-base-300 ">
+                        <label className="swap swap-rotate p-2 border border-transparent hover:border-gray-500 duration-500 rounded-full hover:bg-base-300 ">
                             <input type="checkbox" className="theme-controller" value="synthwave" />
                             {/* sun icon */}
                             <LuSunMoon size={24} className="swap-off fill-current"/>
@@ -62,7 +62,7 @@ const Nav = () => {
                     <div className="flex items-center">
                         {
                             user ? <div className="hidden md:block"><NavUserInfo/></div> : (<div className="md:flex items-center hidden">
-                                <Link to={"/auth/login"}><Button variant="filled" className="font-rubik text-white tracking-wider text-xs font-normal bg-primary">Log in</Button></Link>
+                                <Link to={"/auth/login"}><Button variant="filled" className="font-rubik text-white tracking-wider hover:bg-primary-dark duration-300 text-xs font-normal bg-primary">Log in</Button></Link>
                             </div>)
                         } 
                     </div>
@@ -71,9 +71,9 @@ const Nav = () => {
                     <button onClick={() => setOpenMenu(true)} className="drawer-button lg:hidden">
                         <HiMenuAlt3 size={28}/>
                     </button>
-                    <div>
+                    <aside>
                         <MobileMenuSidebar/>
-                    </div>
+                    </aside>
                 </div>
             </div>
         </div>

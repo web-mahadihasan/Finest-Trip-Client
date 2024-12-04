@@ -1,8 +1,10 @@
 import { Button, Checkbox, Option, Select } from "@material-tailwind/react";
 import React, { useState } from "react";
+import Swal from "sweetalert2";
 
 const AddVisa = () => {
     const [formData, setFormData] = useState({
+        visaTitle: "",
         countryImage: "",
         countryName: "",
         visaType: "",
@@ -45,7 +47,24 @@ const AddVisa = () => {
   // handle visa add
   const handleAddVisa = (e) => {
     e.preventDefault()
-    
+
+    fetch("http://localhost:3000/visas/add-visa", {
+        method: "POST",
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+    })
+    .then(res =>  res.json())
+    .then(data =>  {
+        console.log(data)
+        Swal.fire({
+            title: "Sucessfull!",
+            text: "Sucessfully added new visa",
+            icon: "success",
+          });
+        
+    })
     console.log(formData)
   }
 
@@ -62,12 +81,21 @@ const AddVisa = () => {
         </h2>
         <form onSubmit={handleAddVisa} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Visa Title */}
+            <div className="col-span-2">
+              <label className="block text-[13px] mb-1 font-rubik font-medium text-[#5d5b58]">
+                Visa Title
+              </label>
+              <input onChange={handleInputChange} id="visa-title" type="text" name="visaTitle" 
+              placeholder="Electronic Visa For Individuals..."  required
+              className="w-full h-10 px-4 font-jost text-base transition-all border rounded outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 autofill:bg-white focus:border-primary-light focus:outline-none bg-white bg-opacity-90" />
+            </div>
             {/* Country Image */}
             <div>
               <label className="block text-[13px] mb-1 font-rubik font-medium text-[#5d5b58]">
                 Country Image URL
               </label>
-              <input onChange={handleInputChange} id="country-image" type="url" name="countryImage" placeholder="Ex. https://i.ibb.co.com/image.png" className="w-full h-10 px-4 font-jost text-base transition-all border rounded outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 autofill:bg-white focus:border-primary-light focus:outline-none bg-white bg-opacity-90" />
+              <input onChange={handleInputChange} id="country-image" type="url" name="countryImage" required placeholder="Ex. https://i.ibb.co.com/image.png" className="w-full h-10 px-4 font-jost text-base transition-all border rounded outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 autofill:bg-white focus:border-primary-light focus:outline-none bg-white bg-opacity-90" />
             </div>
 
             {/* Country Name */}
@@ -75,7 +103,7 @@ const AddVisa = () => {
               <label className="block text-[13px] mb-1 font-rubik font-medium text-[#5d5b58]">
                 Country Name
               </label>
-              <input onChange={handleInputChange} id="country" type="text" name="countryName" placeholder="Ex. USA" className="w-full h-10 px-4 font-jost text-base transition-all border rounded outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 autofill:bg-white focus:border-primary-light focus:outline-none bg-white bg-opacity-90" />
+              <input onChange={handleInputChange} id="country" type="text" name="countryName" required placeholder="Ex. USA" className="w-full h-10 px-4 font-jost text-base transition-all border rounded outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 autofill:bg-white focus:border-primary-light focus:outline-none bg-white bg-opacity-90" />
             </div>
 
             {/* Visa Type */}
@@ -83,7 +111,7 @@ const AddVisa = () => {
                <label className="block text-[13px] mb-1 font-rubik font-medium text-[#5d5b58]">
                     Visa Type
               </label>
-              <Select onChange={(val) =>  setFormData(prev =>  ({ ...prev, visaType: val }))} label="Select one" value={formData.visaType} name="visaType" className="bg-white bg-opacity-90">
+              <Select onChange={(val) =>  setFormData(prev =>  ({ ...prev, visaType: val }))} label="Select one" required value={formData.visaType} name="visaType" className="bg-white bg-opacity-90">
                     {visaTypes.map((type) => (
                         <Option key={type} value={type} className="my-1 font-jost text-base">{type}</Option>
                         // onChange={(val) => setValue(val)
@@ -91,15 +119,14 @@ const AddVisa = () => {
                 </Select>
             </div>
 
-             {/* Visa Type */}
+             {/* Processing time */}
              <div>
                <label className="block text-[13px] mb-1 font-rubik font-medium text-[#5d5b58]">
                 Processing Time
               </label>
-              <Select onChange={(val) =>  setFormData(prev =>  ({ ...prev, processingTime: val }))} value={formData.processingTime} label="Select one" className="bg-white bg-opacity-90">
+              <Select onChange={(val) =>  setFormData(prev =>  ({ ...prev, processingTime: val }))} value={formData.processingTime} required label="Select one" className="bg-white bg-opacity-90">
                     {processingTime.map((day) => (
                         <Option key={day} value={day} className="my-1 font-jost text-base">{day}</Option>
-                        // onChange={(val) => setValue(val)
                     ))}
                 </Select>
             </div>
@@ -124,7 +151,7 @@ const AddVisa = () => {
                     Description
                 </label>
               <textarea onChange={handleInputChange}
-                className="textarea outline-none textarea-bordered focus-visible:outline-none focus:border-primary-light font-rubik text-base w-full mt-1 text-gray-700 bg-white bg-opacity-90" name="description"
+                className="textarea outline-none textarea-bordered focus-visible:outline-none focus:border-primary-light font-rubik text-base w-full mt-1 text-gray-700 bg-white bg-opacity-90" name="description" required
                 placeholder="Enter visa description"
               />
             </div>
@@ -134,7 +161,7 @@ const AddVisa = () => {
               <label className="block text-[13px] mb-1 font-rubik font-medium text-[#5d5b58]">
                 Age Restriction
               </label>
-              <input onChange={handleInputChange} id="age" type="number" name="ageRestriction" placeholder="45" className="w-full h-10 px-4 font-jost text-base transition-all border rounded outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 autofill:bg-white focus:border-primary-light focus:outline-none bg-white bg-opacity-90" />
+              <input onChange={handleInputChange} id="age" type="number" name="ageRestriction" placeholder="45" required className="w-full h-10 px-4 font-jost text-base transition-all border rounded outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 autofill:bg-white focus:border-primary-light focus:outline-none bg-white bg-opacity-90" />
             </div>
 
             {/* Fee */}
@@ -142,7 +169,7 @@ const AddVisa = () => {
               <label className="block text-[13px] mb-1 font-rubik font-medium text-[#5d5b58]">
                 Visa Fee
               </label>
-              <input onChange={handleInputChange} id="visa-fee" type="number" name="visaFee" placeholder="$ 350" className="w-full h-10 bg-white bg-opacity-90 px-4 font-jost text-base transition-all border rounded outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 autofill:bg-white focus:border-primary-light focus:outline-none" />
+              <input onChange={handleInputChange} id="visa-fee" type="number" name="visaFee" placeholder="$ 350" required className="w-full h-10 bg-white bg-opacity-90 px-4 font-jost text-base transition-all border rounded outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 autofill:bg-white focus:border-primary-light focus:outline-none" />
             </div>
 
             {/* Validity */}
@@ -150,7 +177,7 @@ const AddVisa = () => {
                <label className="block text-[13px] mb-1 font-rubik font-medium text-[#5d5b58]">
                 Validity
               </label>
-              <Select onChange={(val) =>  setFormData(prev =>  ({ ...prev, validity: val }))} value={formData.validity} label="Select one" className="bg-white bg-opacity-90">
+              <Select onChange={(val) =>  setFormData(prev =>  ({ ...prev, validity: val }))} value={formData.validity} required label="Select one" className="bg-white bg-opacity-90">
                     {validity.map((month) => (
                         <Option key={month} value={month} className="my-1 font-jost text-base">{month}</Option>
                         // onChange={(val) => setValue(val)
@@ -163,7 +190,7 @@ const AddVisa = () => {
               <label className="block text-[13px] mb-1 font-rubik font-medium text-[#5d5b58]">
                 Application method
               </label>
-              <input onChange={handleInputChange} id="application-method" type="text" name="applicationMethod" placeholder="Online" className="w-full h-10 px-4 font-jost text-base transition-all border rounded outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 bg-white bg-opacity-90 autofill:bg-white focus:border-primary-light focus:outline-none" />
+              <input onChange={handleInputChange} id="application-method" type="text" name="applicationMethod" required placeholder="Online" className="w-full h-10 px-4 font-jost text-base transition-all border rounded outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 bg-white bg-opacity-90 autofill:bg-white focus:border-primary-light focus:outline-none" />
             </div>
 
           </div>
