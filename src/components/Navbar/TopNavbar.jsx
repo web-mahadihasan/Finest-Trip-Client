@@ -5,7 +5,7 @@ import { Link } from "react-router";
 const TopNavbar = () => {
 
     return (
-        <div className="w-full bg-[#222222] py-1 invisible lg:visible">
+        <div className="w-full bg-[#222222] py-1 hidden lg:block">
             <div className="max-w-7xl mx-auto px-4 flex justify-between items-center">
                 <div className="flex items-center gap-2">
                     <span><FaPaperPlane size={28} className="text-[#63AB45]"/></span>

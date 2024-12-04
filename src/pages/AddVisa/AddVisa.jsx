@@ -31,7 +31,7 @@ const AddVisa = () => {
     setFormData((prev) => {
       const isSelected = prev.requiredDocuments.includes(document);
       const updatedDocuments = isSelected
-        ? prev.requiredDocuments.filter((item) => item !== document)
+        ? prev.requiredDocuments.filter((item) => item !==  document)
         : [...prev.requiredDocuments, document];
       return { ...prev, requiredDocuments: updatedDocuments };
     });
@@ -67,7 +67,7 @@ const AddVisa = () => {
               <label className="block text-[13px] mb-1 font-rubik font-medium text-[#5d5b58]">
                 Country Image URL
               </label>
-              <input onChange={handleInputChange} id="country-image" type="url" name="countryImage" placeholder="Ex. https://i.ibb.co.com/image.png" class="w-full h-10 px-4 font-jost text-base transition-all border rounded outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 autofill:bg-white focus:border-primary-light focus:outline-none bg-white bg-opacity-90" />
+              <input onChange={handleInputChange} id="country-image" type="url" name="countryImage" placeholder="Ex. https://i.ibb.co.com/image.png" className="w-full h-10 px-4 font-jost text-base transition-all border rounded outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 autofill:bg-white focus:border-primary-light focus:outline-none bg-white bg-opacity-90" />
             </div>
 
             {/* Country Name */}
@@ -75,7 +75,7 @@ const AddVisa = () => {
               <label className="block text-[13px] mb-1 font-rubik font-medium text-[#5d5b58]">
                 Country Name
               </label>
-              <input onChange={handleInputChange} id="country" type="text" name="countryName" placeholder="Ex. USA" class="w-full h-10 px-4 font-jost text-base transition-all border rounded outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 autofill:bg-white focus:border-primary-light focus:outline-none bg-white bg-opacity-90" />
+              <input onChange={handleInputChange} id="country" type="text" name="countryName" placeholder="Ex. USA" className="w-full h-10 px-4 font-jost text-base transition-all border rounded outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 autofill:bg-white focus:border-primary-light focus:outline-none bg-white bg-opacity-90" />
             </div>
 
             {/* Visa Type */}
@@ -134,7 +134,7 @@ const AddVisa = () => {
               <label className="block text-[13px] mb-1 font-rubik font-medium text-[#5d5b58]">
                 Age Restriction
               </label>
-              <input onChange={handleInputChange} id="age" type="number" name="ageRestriction" placeholder="45" class="w-full h-10 px-4 font-jost text-base transition-all border rounded outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 autofill:bg-white focus:border-primary-light focus:outline-none bg-white bg-opacity-90" />
+              <input onChange={handleInputChange} id="age" type="number" name="ageRestriction" placeholder="45" className="w-full h-10 px-4 font-jost text-base transition-all border rounded outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 autofill:bg-white focus:border-primary-light focus:outline-none bg-white bg-opacity-90" />
             </div>
 
             {/* Fee */}
@@ -142,7 +142,7 @@ const AddVisa = () => {
               <label className="block text-[13px] mb-1 font-rubik font-medium text-[#5d5b58]">
                 Visa Fee
               </label>
-              <input onChange={handleInputChange} id="visa-fee" type="number" name="visaFee" placeholder="$ 350" class="w-full h-10 bg-white bg-opacity-90 px-4 font-jost text-base transition-all border rounded outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 autofill:bg-white focus:border-primary-light focus:outline-none" />
+              <input onChange={handleInputChange} id="visa-fee" type="number" name="visaFee" placeholder="$ 350" className="w-full h-10 bg-white bg-opacity-90 px-4 font-jost text-base transition-all border rounded outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 autofill:bg-white focus:border-primary-light focus:outline-none" />
             </div>
 
             {/* Validity */}
@@ -163,7 +163,7 @@ const AddVisa = () => {
               <label className="block text-[13px] mb-1 font-rubik font-medium text-[#5d5b58]">
                 Application method
               </label>
-              <input onChange={handleInputChange} id="application-method" type="text" name="applicationMethod" placeholder="Online" class="w-full h-10 px-4 font-jost text-base transition-all border rounded outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 bg-white bg-opacity-90 autofill:bg-white focus:border-primary-light focus:outline-none" />
+              <input onChange={handleInputChange} id="application-method" type="text" name="applicationMethod" placeholder="Online" className="w-full h-10 px-4 font-jost text-base transition-all border rounded outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 bg-white bg-opacity-90 autofill:bg-white focus:border-primary-light focus:outline-none" />
             </div>
 
           </div>

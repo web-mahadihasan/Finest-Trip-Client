@@ -2,13 +2,17 @@ import { Outlet } from "react-router";
 import Footer from "../components/Footer/Footer";
 import TopNavbar from "../components/Navbar/TopNavbar";
 import { Toaster } from "react-hot-toast";
+import Nav from "../components/Navbar/Nav";
 
 const MainLayouts = () => {
     return (
         <div>
             <Toaster/>
-            <header>
+            <div>
                 <TopNavbar/>
+            </div>
+            <header className="top-0 sticky">                
+                <Nav/>
             </header>
             <p className="font-jost">This is main layout</p>
             <div>

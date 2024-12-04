@@ -4,6 +4,9 @@
 @tailwind components;
 @tailwind utilities;
 
+body{
+    overflow-x: scroll;
+}
 .text-shadow {
     text-shadow: 3px 3px 5px rgba(51, 26, 21, 0.5);
 }
