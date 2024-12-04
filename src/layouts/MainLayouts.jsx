@@ -14,7 +14,6 @@ const MainLayouts = () => {
             <header className="top-0 sticky">                
                 <Nav/>
             </header>
-            <p className="font-jost">This is main layout</p>
             <div>
                 <Outlet/>
             </div>

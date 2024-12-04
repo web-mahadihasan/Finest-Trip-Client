@@ -5,6 +5,7 @@ import Home from "../layouts/Home";
 import Register from "../pages/Register/Register";
 import Login from "../pages/Login/Login";
 import AddVisa from "../pages/AddVisa/AddVisa";
+import AllVisa from "../pages/AllVisa/AllVisa";
 
 const Router = createBrowserRouter([
     {
@@ -19,6 +20,10 @@ const Router = createBrowserRouter([
             {
                 path: "/add-visa",
                 element: <AddVisa/>
+            },
+            {
+                path: "/all-visa",
+                element: <AllVisa/>
             },
             {
                 path: "/auth/register",

@@ -89,7 +89,7 @@ const Login = () => {
                 />
               </div>
               {/* Password  */}
-              <div className="*:block xl:w-[75%] mx-auto relative">
+              <div className="*:block xl:w-[75%] mx-auto relative -z-0">
                 <label
                   htmlFor=""
                   className="text-white font-rubik text-sm font-normal my-px"

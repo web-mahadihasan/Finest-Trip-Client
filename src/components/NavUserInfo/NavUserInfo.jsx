@@ -22,7 +22,7 @@ const NavUserInfo = () =>  {
     })
   } 
   return (
-    <div className="text-right">
+    <div className="">
       <Menu>
         <MenuButton className="inline-flex items-center ">
           <div className="rounded-full flex items-center gap-2">

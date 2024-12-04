@@ -5,12 +5,14 @@
 @tailwind utilities;
 
 body{
-    overflow-x: scroll;
+    overflow-y: scroll;
 }
 .text-shadow {
     text-shadow: 3px 3px 5px rgba(51, 26, 21, 0.5);
 }
-
+a.active{
+    color: #63AB45;    
+}
 .add-visa-bg{
     background: linear-gradient(125deg, rgba(99, 171, 69, 0.1) 0%, rgba(251, 176, 59, 0.1) 100%);
 }
