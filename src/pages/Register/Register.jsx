@@ -9,6 +9,8 @@ import { useAuth } from "../../provider/AuthProvider";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 import { registerUser } from "../../features/authentication";
+import "../Login/login.css"
+
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -220,19 +222,33 @@ const Register = () => {
         </div>
         {/* Login image  */}
         <div
-          data-aos="fade-right"
-          data-aos-duration="300"
-          className="w-full h-full flex-1 order-1 md:order-2"
-        >
-          <img
-            src="https://i.ibb.co.com/z5pc7r2/auth-bg.png"
-            alt=""
-            className="h-full w-full rounded-t-2xl md:rounded-l-none  md:rounded-r-2xl"
-          />
+          className="hero h-full w-full flex-1 rounded-t-2xl md:rounded-l-none  md:rounded-r-2xl order-1 md:order-2"
+          style={{
+            backgroundImage: "url(https://i.ibb.co.com/hB1VwD5/Web-Photo-Editorr.jpg)",
+          }}>
+          <div className="hero-overlay bg-opacity-30 rounded-t-2xl md:rounded-l-none  md:rounded-r-2xl"></div>
+          <div className="text-neutral-content text-center">
+            <div className="">
+              <Link className="flex items-center gap-3 play-btn-auth w-fit">
+                  <div className="relative h-[70px] flex items-center w-[70px]">
+                      <a className="video-play-button-auth ">
+                          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                            viewBox="0 0 104 104" enable-background="new 0 0 104 104" xml:space="preserve">
+                              <path fill="none" stroke="#FFFFFF" stroke-width="4" stroke-miterlimit="10" d="M26,35h52L52,81L26,35z"/>
+                              <circle class="video-play-circle-auth" fill="none" stroke="#e11d48" stroke-width="4" stroke-miterlimit="10" cx="52" cy="52" r="50"/>
+                          </svg>
+                        <span class="video-play-outline-auth"></span>
+                      </a>
+                    </div>
+                </Link>
+            </div>
+          </div>
         </div>
+        {/* End login image  */}
       </div>
     </div>
   );
 };
 
 export default Register;
+// w-full h-full flex-1 order-1 md:order-2

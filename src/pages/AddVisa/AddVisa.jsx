@@ -1,6 +1,7 @@
 import { Button, Checkbox, Option, Select } from "@material-tailwind/react";
 import React, { useState } from "react";
 import Swal from "sweetalert2";
+import PageBanner from "../../components/PageBanner/PageBanner";
 
 const AddVisa = () => {
     const [formData, setFormData] = useState({
@@ -69,15 +70,17 @@ const AddVisa = () => {
   }
 
   return (
-    <div
-      className="min-h-screen bg-cover bg-center flex items-center justify-center bg-visa-form-bg bg-opacity-90 bg-no-repeat"    
-    >
+    <div>
+      <div>
+       <PageBanner bgImg="https://i.ibb.co.com/yqLfWK0/Section-7.png" title="Add New Visa" path="add-visa"/>
+      </div>
+      <div className="min-h-screen bg-cover bg-center flex mt-16 items-center justify-center bg-visa-form-bg bg-opacity-90 bg-no-repeat"    >
       <div className="rounded-lg shadow-lg p-8 max-w-6xl w-full"
         style={{
             background: "linear-gradient(125deg, rgba(99, 171, 69, 0.1) 0%, rgba(251, 176, 59, 0.1) 100%)",
           }}>
         <h2 className="text-3xl font-rubik font-bold text-center text-gray-800 mb-6">
-          Add Visa Information
+          Visa Information
         </h2>
         <form onSubmit={handleAddVisa} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -201,6 +204,7 @@ const AddVisa = () => {
           </div>
         </form>
       </div>
+    </div>
     </div>
   );
 };

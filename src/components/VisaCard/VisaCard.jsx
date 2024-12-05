@@ -2,9 +2,11 @@ import { MdAccessTime } from "react-icons/md";
 import location from "../../assets/location.svg"
 import { Button } from "@material-tailwind/react";
 import { BsArrowUpRightCircle } from "react-icons/bs";
+import { Link } from "react-router";
 
 const VisaCard = ({visa={}}) => {
     const {
+        _id,
         visaTitle,
         countryImage,
         countryName,
@@ -67,7 +69,9 @@ const VisaCard = ({visa={}}) => {
                     <p className="text-xs">TAXES INCL/PERS</p>
                 </div>
                 <div>
-                    <Button variant="filled" className="bg-primary font-rubik font-medium tracking-wide flex items-center gap-1 hover:bg-primary-dark duration-300">See Details <BsArrowUpRightCircle size={18}/> </Button>
+                    <Link to={`/visa-details/${_id}`}>                    
+                        <Button variant="filled" className="bg-primary font-rubik font-medium tracking-wide flex items-center gap-1 hover:bg-primary-dark duration-300">See Details <BsArrowUpRightCircle size={18}/> </Button>
+                    </Link>
                 </div>
             </div>
         </div>

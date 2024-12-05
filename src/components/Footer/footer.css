@@ -1,0 +1,17 @@
+#animate-area {
+    width: 100%;
+    /* min-height: 620px; */
+    background-color: #14161c;
+    background-image: url(https://i.ibb.co.com/GHNVzf9/shape-4.webp);
+    background-position: 0px 0px;
+    background-repeat: repeat-x;
+    animation: animatedBackground 3s linear infinite alternate;
+  }
+  @keyframes animatedBackground {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: 100% 0;
+    }
+  }

@@ -13,7 +13,8 @@ module.exports = withMT ({
             DEFAULT: '#63AB45',
             dark: '#228b22'
           },
-          customGreen: '#22b573'
+          customGreen: '#22b573',
+          titleBlack: '#100C08'
         },
         fontFamily: {
           rubik: ["Rubik", 'sans-serif'],
@@ -22,6 +23,7 @@ module.exports = withMT ({
         },
         backgroundImage: {
           'visa-form-bg': 'url("https://i.ibb.co.com/c8BqM00/add-visa-bg.png")',
+          'faq-bg': 'url("https://i.ibb.co.com/FYtnNJM/faq.png")',
         },
       },
     },

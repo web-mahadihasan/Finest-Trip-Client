@@ -17,12 +17,12 @@ const Nav = () => {
         { "path": "/", "element": "Home" },
         { "path": "/all-visa", "element": "All Visas" },
         { "path": "/add-visa", "element": "Add Visa" },
-        { "path": "/my-added-visa", "element": "Added Visas" },
+        { "path": "/my-added-visa", "element": "My Added Visa" },
         { "path": "/my-visa-application", "element": "Visa Applications" }
       ]
             
     return (
-        <div className=" w-full border-b border-base-200 shadow-md bg-white z-50">
+        <div className=" w-full border-b border-base-100 shadow-md bg-white z-50 backdrop-blur-2xl">
             <div className="flex py-4 items-center justify-between container mx-auto px-4 md:px-0">
                 <div className="flex items-center gap-2">
                     <img src={logo} alt="" className="w-12" />
@@ -41,13 +41,13 @@ const Nav = () => {
                     </ul>
                 </div>
                 <div className="flex items-center gap-3">
-                    <div className="px-2 py-2 cursor-pointer border border-transparent hover:border-gray-500 duration-500 rounded-full hover:bg-base-300">
+                    <div className="px-2 py-2 cursor-pointer border border-transparent hover:border-gray-500 duration-500 rounded-full hover:bg-base-300 ">
                         <img src={appsSvg} alt="" />
                     </div>
 
                     {/* Theme control  */}
                     <div>
-                    <button className="">
+                    <button className="border-x px-2 border-base-300">
                         <label className="swap swap-rotate p-2 border border-transparent hover:border-gray-500 duration-500 rounded-full hover:bg-base-300 ">
                             <input type="checkbox" className="theme-controller" value="synthwave" />
                             {/* sun icon */}

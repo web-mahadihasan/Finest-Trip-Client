@@ -7,7 +7,7 @@ import { FcGoogle } from "react-icons/fc";
 import { Button, Checkbox} from "@material-tailwind/react";
 import { useAuth } from "../../provider/AuthProvider";
 import { googleLogin, loginUser } from "../../features/authentication";
-
+import "./login.css"
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -34,16 +34,51 @@ const Login = () => {
   return (
     <div className="min-h-screen my-8 max-w-7xl mx-auto px-4 flex items-center justify-center">
       <div className="w-full md:h-[800px] font-jost flex flex-col md:flex-row border items-center rounded-2xl shadow-md">
-        <div
+        {/* <div
           data-aos="fade-left"
           data-aos-duration="300"
-          className="w-full h-full flex-1"
+          className="w-full h-full hero flex-1 rounded-t-2xl md:rounded-r-none  md:rounded-l-2xl bg-cover relative flex items-center justify-center" style={{ backgroundImage: "url(https://i.ibb.co.com/hB1VwD5/Web-Photo-Editorr.jpg)",}}
         >
-          <img
-            src="https://i.ibb.co.com/z5pc7r2/auth-bg.png"
-            alt=""
-            className="h-full w-full rounded-t-2xl md:rounded-r-none  md:rounded-l-2xl"
-          />
+          <div className="hero-overlay bg-opacity-60"></div>
+     
+          <div className="hero-content text-neutral-content text-center">
+          <Link className="flex items-center gap-3 play-btn-auth w-fit">
+               <div className="relative h-[70px] flex items-center w-[70px]">
+                  <a className="video-play-button-auth ">
+                      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                        viewBox="0 0 104 104" enable-background="new 0 0 104 104" xml:space="preserve">
+                          <path fill="none" stroke="#000" stroke-width="4" stroke-miterlimit="10" d="M26,35h52L52,81L26,35z"/>
+                          <circle class="video-play-circle-auth" fill="none" stroke="#e11d48" stroke-width="4" stroke-miterlimit="10" cx="52" cy="52" r="50"/>
+                      </svg>
+                    <span class="video-play-outline-auth"></span>
+                  </a>
+                </div>
+            </Link>
+          </div>
+         
+        </div> */}
+        <div
+          className="hero h-full w-full flex-1 rounded-t-2xl md:rounded-r-none  md:rounded-l-2xl"
+          style={{
+            backgroundImage: "url(https://i.ibb.co.com/hB1VwD5/Web-Photo-Editorr.jpg)",
+          }}>
+          <div className="hero-overlay bg-opacity-30 rounded-t-2xl md:rounded-r-none  md:rounded-l-2xl"></div>
+          <div className="text-neutral-content text-center">
+            <div className="">
+              <Link className="flex items-center gap-3 play-btn-auth w-fit">
+                  <div className="relative h-[70px] flex items-center w-[70px]">
+                      <a className="video-play-button-auth ">
+                          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                            viewBox="0 0 104 104" enable-background="new 0 0 104 104" xml:space="preserve">
+                              <path fill="none" stroke="#FFFFFF" stroke-width="4" stroke-miterlimit="10" d="M26,35h52L52,81L26,35z"/>
+                              <circle class="video-play-circle-auth" fill="none" stroke="#e11d48" stroke-width="4" stroke-miterlimit="10" cx="52" cy="52" r="50"/>
+                          </svg>
+                        <span class="video-play-outline-auth"></span>
+                      </a>
+                    </div>
+                </Link>
+            </div>
+          </div>
         </div>
 
         {/* Sign up info */}

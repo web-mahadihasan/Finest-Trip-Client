@@ -9,6 +9,7 @@ import AllVisa from "../pages/AllVisa/AllVisa";
 import MyAddedVisa from "../pages/MyAddedVisa/MyAddedVisa";
 import MyVisaApplication from "../pages/MyVisaApplication/MyVisaApplication";
 import PrivateRoutes from "./PrivateRoutes";
+import VisaDetails from "../pages/VisaDetails/VisaDetails";
 
 const Router = createBrowserRouter([
     {
@@ -36,6 +37,19 @@ const Router = createBrowserRouter([
             {
                 path: "/my-visa-application",
                 element: <MyVisaApplication/>
+            },
+            {
+                path: "/visa-details/:id",
+                element: <VisaDetails/>,
+                loader: async ({params}) =>  {
+                    const faqRes = await fetch("/faq.json")
+                    const faqData = await faqRes.json()
+
+                    const visaDetailsRes = await fetch(`http://localhost:3000/visa-details/${params.id}`);
+                    const visaDetailsData = await visaDetailsRes.json()
+                    
+                    return {visaDetailsData, faqData}
+                }
             },
             {
                 path: "/auth/register",

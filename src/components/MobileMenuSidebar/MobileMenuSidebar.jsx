@@ -15,7 +15,7 @@ const MobileMenuSidebar = () => {
         { "path": "/", "element": "Home" },
         { "path": "/all-visa", "element": "All Visas" },
         { "path": "/add-visa", "element": "Add Visa" },
-        { "path": "/my-added-visa", "element": "Added Visas" },
+        { "path": "/my-added-visa", "element": "My Added Visa" },
         { "path": "/my-visa-application", "element": "Visa Applications" }
       ]
     return (
