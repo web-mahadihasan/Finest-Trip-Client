@@ -6,15 +6,15 @@ import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { Button, Checkbox} from "@material-tailwind/react";
 import { useAuth } from "../../provider/AuthProvider";
-import { googleLogin, loginUser } from "../../features/authentication";
 import "./login.css"
+import toast from "react-hot-toast";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const { loginUserWithEmail, setUser, loginWithGoogle, error, setError } = useAuth();
   const navigate = useNavigate();
   const location = useLocation()
-  console.log(location)
 
   // handle login 
   const handleLogin = (e) => {
@@ -22,43 +22,49 @@ const Login = () => {
     const email = e.target.email.value;
     const password = e.target.password.value;
 
-    loginUser(email, password, loginUserWithEmail, setError, error, setUser)
+    loginUserWithEmail(email, password)
+      .then((result) => {
+        console.log(result.user)
+        setUser(result.user);
+        toast.success("User Successfully sing in");
+        navigate(location.state ? location.state : "/");
+      })
+      .catch((err) => {
+        toast.error("Falied to Log in! Try again")
+        if ((err = "auth/invalid-credential")) {
+          setError({
+            ...error,
+            invalid: "Invalid email or password! try again",
+          });
+        }
+        console.log(err);
+      });
     
   };
 
   // handle google login 
   const handleGoogleLogin = () => {
 
-    googleLogin(loginWithGoogle, setUser)
-    
+    loginWithGoogle()
+      .then((result) => {
+        console.log(result.user);
+        setUser(result.user);
+        toast.success("User Successfully Log in");
+        navigate(location.state? location.state : "/");
+      })
+      .catch((err) => {
+        console.log(err);
+        Swal.fire({
+          title: "Warning!",
+          text: "Failed!!  while Creating New user! try again",
+          icon: "error",
+        });
+      });
   };
 
   return (
     <div className="min-h-screen my-8 max-w-7xl mx-auto px-4 flex items-center justify-center">
       <div className="w-full md:h-[800px] font-jost flex flex-col md:flex-row border items-center rounded-2xl shadow-md">
-        {/* <div
-          data-aos="fade-left"
-          data-aos-duration="300"
-          className="w-full h-full hero flex-1 rounded-t-2xl md:rounded-r-none  md:rounded-l-2xl bg-cover relative flex items-center justify-center" style={{ backgroundImage: "url(https://i.ibb.co.com/hB1VwD5/Web-Photo-Editorr.jpg)",}}
-        >
-          <div className="hero-overlay bg-opacity-60"></div>
-     
-          <div className="hero-content text-neutral-content text-center">
-          <Link className="flex items-center gap-3 play-btn-auth w-fit">
-               <div className="relative h-[70px] flex items-center w-[70px]">
-                  <a className="video-play-button-auth ">
-                      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                        viewBox="0 0 104 104" enable-background="new 0 0 104 104" xml:space="preserve">
-                          <path fill="none" stroke="#000" stroke-width="4" stroke-miterlimit="10" d="M26,35h52L52,81L26,35z"/>
-                          <circle class="video-play-circle-auth" fill="none" stroke="#e11d48" stroke-width="4" stroke-miterlimit="10" cx="52" cy="52" r="50"/>
-                      </svg>
-                    <span class="video-play-outline-auth"></span>
-                  </a>
-                </div>
-            </Link>
-          </div>
-         
-        </div> */}
         <div
           className="hero h-full w-full flex-1 rounded-t-2xl md:rounded-r-none  md:rounded-l-2xl"
           style={{

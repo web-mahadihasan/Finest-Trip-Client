@@ -8,16 +8,14 @@ import { Button } from "@material-tailwind/react";
 import { useAuth } from "../../provider/AuthProvider";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
-import { registerUser } from "../../features/authentication";
 import "../Login/login.css"
 
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const { createNewUser, updateUserProfile, setUser, error, setError } = useAuth();
+  const { createNewUser, updateUserProfile, loginWithGoogle, setUser, error, setError } = useAuth();
   const navigate = useNavigate();
   const [imageUrl, setImageUrl] = useState("");
-  // const [error, setError] = useState({});
   const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{6,}$/;
 
   //    Handle Image upload
@@ -45,24 +43,56 @@ const Register = () => {
     const email = data.get("email");
     const password = data.get("password");
     const gender = data.get("gender");
-    const updataData = { displayName: name, photoURL: imageUrl };
+    const updateData = { displayName: name, photoURL: imageUrl };
 
     const checkPassword = passwordRegex.test(password)
-    const userData = {
-      name,
-      email,
-      gender,
-      imageUrl,
-      password
-    };
     
-    return registerUser(userData, createNewUser, updateUserProfile, setUser, error, setError, navigate)
+    createNewUser(email, password)
+      .then((result) => {
+        setUser(result.user);
+        updateUserProfile(updateData)
+          .then(() => {
+            toast.success("Successfully create new user");
+            navigate("/");
+          })
+          .catch((err) => {
+            Swal.fire({
+              title: "Warning!",
+              text: "Failed!!  while Creating New user! try again",
+              icon: "error",
+            });
+          });
+      })
+      .catch((err) => {    
+        if ((err = "auth/email-already-in-use")) {
+          setError({...error, alreadyUsed: "Email already used, Please try Log in"});
+          Swal.fire({
+            title: "Warning!",
+            text: "Failed!!  Email already used, Please try Log in",
+            icon: "error",
+          });
+        }
+      });
     
   };
-  const handleGoogleRegister = () => {
+  // handle google login 
+  const handleGoogleLogin = () => {
 
-    return googleLogin(loginWithGoogle, setUser)
-    
+    loginWithGoogle()
+      .then((result) => {
+        console.log(result.user);
+        setUser(result.user);
+        toast.success("User Successfully sing in");
+        navigate("/");
+      })
+      .catch((err) => {
+        console.log(err);
+        Swal.fire({
+          title: "Warning!",
+          text: "Failed!!  while Creating New user! try again",
+          icon: "error",
+        });
+      });
   };
 
   return (
@@ -203,7 +233,7 @@ const Register = () => {
             </div>
             {/* Google Log in Sign in  */}
             <div className="my-3 text-center w-full lg:w-[55%] mx-auto">
-              <button onClick={handleGoogleRegister} className="px-6 rounded py-2 border border-primary bg-gray-800 w-full flex justify-center" >
+              <button onClick={handleGoogleLogin} className="px-6 rounded py-2 border border-primary bg-gray-800 w-full flex justify-center" >
                 <FcGoogle size={28} />
               </button>
             </div>
@@ -251,4 +281,3 @@ const Register = () => {
 };
 
 export default Register;
-// w-full h-full flex-1 order-1 md:order-2

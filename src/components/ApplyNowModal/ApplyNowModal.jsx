@@ -2,12 +2,24 @@ import { Button } from "@material-tailwind/react";
 import logo from "../../assets/logo1.png";
 import { useAuth } from "../../provider/AuthProvider";
 
-const ApplyNowModal = ({visaData}) => {
+const ApplyNowModal = ({visaData, onApplicationSubmit}) => {
     const {user} = useAuth()
     const {visaFee, countryName} = visaData || {};
 
     const handleApplicationForm = (e) =>  {
         e.preventDefault()
+        const form = e.target 
+        const data = new FormData(form)
+        const fName = data.get("firstName");
+        const lName = data.get("lastName");
+        const fullName = `${fName} ${lName}`
+        
+        const applicationData = {
+            ...visaData,  
+            userEmail: user.email, 
+            userName: user.displayName
+        }
+        return onApplicationSubmit(applicationData)
     }
     return (
         <div >
@@ -36,7 +48,7 @@ const ApplyNowModal = ({visaData}) => {
                             <label className="block text-[16px] mb-1 font-rubik font-medium text-[#5d5b58]">
                                 First Name
                             </label>
-                            <input id="country" type="text" name="fName" required placeholder="john" className="w-full h-10 px-4 font-jost text-base transition-all border rounded outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 autofill:bg-white focus:border-primary-light focus:outline-none bg-white bg-opacity-90 max-w-lg" />
+                            <input id="country" type="text" name="firstName" required placeholder="john" className="w-full h-10 px-4 font-jost text-base transition-all border rounded outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 autofill:bg-white focus:border-primary-light focus:outline-none bg-white bg-opacity-90 max-w-lg" />
                         </div>
                         <div>
                             <label className="block text-[16px] mb-1 font-rubik font-medium text-[#5d5b58]">
@@ -57,7 +69,7 @@ const ApplyNowModal = ({visaData}) => {
                     </div>
 
                     {/* Submit  */}
-                    <Button variant="filled" className="w-full bg-primary font-rubik tracking-wide font-normal text-base hover:bg-primary-dark duration-300">Submit application</Button>
+                    <Button type="submit" variant="filled" className="w-full bg-primary font-rubik tracking-wide font-normal text-base hover:bg-primary-dark duration-300">Submit application</Button>
                 </form>
             </div>
         </div>

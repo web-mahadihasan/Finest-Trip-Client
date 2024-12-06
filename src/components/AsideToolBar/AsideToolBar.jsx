@@ -1,7 +1,7 @@
 import { Button, Radio } from "@material-tailwind/react";
 import { useState } from "react";
-import { Slider } from "rsuite";
-// import 'rsuite/styles/index.less';
+import {  LiaSortNumericDownSolid, LiaSortNumericUpAltSolid } from "react-icons/lia";
+
 
 const AsideToolBar = () => {
     const [selectedOption, setSelectedOption] = useState(null)
@@ -44,8 +44,10 @@ const AsideToolBar = () => {
                 </div>
             </div>
             <div className="bg-base-100 shadow p-6 my-4 lg:my-0 border lg:flex-1">
-                <h3 className="text-lg font-medium font-rubik text-titleBlack">Filter by Price </h3>
+                <h3 className="text-lg font-medium font-rubik text-titleBlack">Sort by Price </h3>
                 <div className="my-4 font-rubik px-2">
+                    <button className="flex items-center gap-1 p-2 border border-primary px-4 rounded bg-base-200 border-dashed font-jost">Price Low to High <LiaSortNumericDownSolid  size={18}/> </button>
+                    <button className="flex items-center gap-1">Price Low to High <LiaSortNumericUpAltSolid size={18} /> </button>
                     {/* <Slider
                         defaultValue={50}
                         min={200}

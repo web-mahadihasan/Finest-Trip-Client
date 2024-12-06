@@ -2,8 +2,10 @@ import { Button, Checkbox, Option, Select } from "@material-tailwind/react";
 import React, { useState } from "react";
 import Swal from "sweetalert2";
 import PageBanner from "../../components/PageBanner/PageBanner";
+import { useAuth } from "../../provider/AuthProvider";
 
 const AddVisa = () => {
+  const {user} = useAuth()
     const [formData, setFormData] = useState({
         visaTitle: "",
         countryImage: "",
@@ -16,6 +18,8 @@ const AddVisa = () => {
         visaFee: "",
         validity: "",
         applicationMethod: "",
+        userEmail: user?.email,
+        userName: user?.displayName,
       });
 
   const documentOptions = [
@@ -49,7 +53,7 @@ const AddVisa = () => {
   const handleAddVisa = (e) => {
     e.preventDefault()
 
-    fetch("http://localhost:3000/visas/add-visa", {
+    fetch("http://localhost:3000/add-visa", {
         method: "POST",
         headers: {
             'content-type': 'application/json'

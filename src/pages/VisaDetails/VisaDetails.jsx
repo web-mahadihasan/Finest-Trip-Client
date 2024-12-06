@@ -4,16 +4,18 @@ import { Button } from "@material-tailwind/react";
 import { RxExternalLink } from "react-icons/rx";
 import PlanYourTrip from "../../components/PlanYourTrip/PlanYourTrip";
 import FAQ from "../../components/FAQ/FAQ";
-import { Link, useLoaderData } from "react-router";
+import { Link, useLoaderData, useNavigate } from "react-router";
 import { GoArrowLeft } from "react-icons/go";
 import ApplyNowModal from "../../components/ApplyNowModal/ApplyNowModal";
-import { useRef, useState } from "react";
-import { MdCloseFullscreen } from "react-icons/md";
+import { useRef } from "react";
 import { RiCloseLargeLine } from "react-icons/ri";
 import PageBanner from "../../components/PageBanner/PageBanner";
+import Swal from "sweetalert2";
+import toast from "react-hot-toast";
 
 const VisaDetails = () => {
-    const {faqData, visaDetailsData} = useLoaderData()
+    const {faqData, visaDetailsData} = useLoaderData();
+    const navigate = useNavigate()
     const modalRef = useRef()
     const { 
         _id,
@@ -39,6 +41,29 @@ const VisaDetails = () => {
     ];
     const handleApplyNow = () => { 
         modalRef.current.showModal()
+    }
+    const handleSubmitApplication = (applicationData) => {
+        fetch('http://localhost:3000/submit-application', {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(applicationData)
+        })
+        .then(res =>  res.json())
+        .then(data =>  {
+            if(data.insertedId){
+                modalRef.current.close()
+                Swal.fire({
+                    title: "Congratulation!",
+                    text: "Sucessfully submit application form. Wait for response",
+                    icon: "success",
+                  });
+                navigate("/my-visa-application")
+            }
+        }).catch(err => {
+            toast.error("Falied to submit your application! Try again")
+        })
     }
     return (
         <div>
@@ -136,7 +161,7 @@ const VisaDetails = () => {
                                     <form method="dialog">
                                         <button className="btn btn-sm md:btn-md border border-primary btn-circle right-5 absolute top-4"><RiCloseLargeLine size={20}/></button>
                                     </form>
-                                    <ApplyNowModal visaData={visaDetailsData}/>
+                                    <ApplyNowModal visaData={visaDetailsData} onApplicationSubmit={handleSubmitApplication}/>
                                 </div>
                             </dialog>
                         </div>
