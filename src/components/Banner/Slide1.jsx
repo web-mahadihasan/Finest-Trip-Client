@@ -19,7 +19,7 @@ const Slide1 = () => {
                     <span>Let’s Explore Your </span>
                     <span className="text-primary">
                     <Typewriter
-                        words={['Holiday Trip.', 'Honeymoon Trip.', 'Family Trip.']}
+                        words={['Student Visa.', 'Holiday Trip.', 'Honeymoon Trip.', 'Family Trip.']}
                         loop={Infinity}
                         cursor
                         cursorStyle='|'
