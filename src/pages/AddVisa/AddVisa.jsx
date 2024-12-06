@@ -74,7 +74,7 @@ const AddVisa = () => {
       <div>
        <PageBanner bgImg="https://i.ibb.co.com/yqLfWK0/Section-7.png" title="Add New Visa" path="add-visa"/>
       </div>
-      <div className="min-h-screen bg-cover bg-center flex mt-16 items-center justify-center bg-visa-form-bg bg-opacity-90 bg-no-repeat"    >
+      <div className="min-h-screen bg-cover bg-center flex my-24 items-center justify-center bg-visa-form-bg bg-opacity-90 bg-no-repeat"    >
       <div className="rounded-lg shadow-lg p-8 max-w-6xl w-full"
         style={{
             background: "linear-gradient(125deg, rgba(99, 171, 69, 0.1) 0%, rgba(251, 176, 59, 0.1) 100%)",

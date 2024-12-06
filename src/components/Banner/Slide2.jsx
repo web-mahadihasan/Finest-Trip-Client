@@ -25,14 +25,14 @@ const Slide2 = () => {
                             </Link> */}
                             <Link className="flex items-center gap-3 play-btn w-fit">
                                 <div className="relative h-[70px] flex items-center w-[70px]">
-                                    <a className="video-play-button top-0 left-0 ">
-                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                            viewBox="0 0 104 104" enable-background="new 0 0 104 104" xml:space="preserve">
-                                        <path fill="none" stroke="#FFFFFF" stroke-width="4" stroke-miterlimit="10" d="M26,35h52L52,81L26,35z"/>
-                                        <circle class="video-play-circle" fill="none" stroke="#e11d48" stroke-width="4" stroke-miterlimit="10" cx="52" cy="52" r="50"/>
+                                    <p className="video-play-button top-0 left-0 ">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                            viewBox="0 0 104 104" enableBackground="new 0 0 104 104" xmlSpace="preserve">
+                                        <path fill="none" stroke="#FFFFFF" strokeWidth="4" strokeMiterlimit="10" d="M26,35h52L52,81L26,35z"/>
+                                        <circle className="video-play-circle" fill="none" stroke="#e11d48" strokeWidth="4" strokeMiterlimit="10" cx="52" cy="52" r="50"/>
                                         </svg>
-                                        <span class="video-play-outline"></span>
-                                    </a>
+                                        <span className="video-play-outline"></span>
+                                    </p>
                                 </div>
                                     <span className="font-rubik text-lg font-medium">Watch Tour Videos</span>
                             </Link>

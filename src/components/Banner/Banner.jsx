@@ -11,7 +11,7 @@ const Banner = () => {
       type: "carousel",
       focusAt: "center",
       perView: 1,
-      autoplay: 4000,
+      // autoplay: 4000,
       animationDuration: 700,
       gap: 24,
       classNames: {

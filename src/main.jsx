@@ -6,11 +6,12 @@ import Router from './routes/Router.jsx'
 import AuthProvider from './provider/AuthProvider.jsx'
 import AppContext from './provider/AppContext.jsx'
 
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <AppContext>
-      <AuthProvider>
-        <RouterProvider router={Router}/>
+      <AuthProvider> 
+          <RouterProvider router={Router}/>
       </AuthProvider>
     </AppContext>
   </StrictMode>,

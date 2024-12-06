@@ -56,12 +56,12 @@ const Register = () => {
       password
     };
     
-    registerUser(userData, createNewUser, updateUserProfile, setUser, error, setError, navigate)
+    return registerUser(userData, createNewUser, updateUserProfile, setUser, error, setError, navigate)
     
   };
   const handleGoogleRegister = () => {
 
-    googleLogin(loginWithGoogle, setUser)
+    return googleLogin(loginWithGoogle, setUser)
     
   };
 
@@ -231,14 +231,14 @@ const Register = () => {
             <div className="">
               <Link className="flex items-center gap-3 play-btn-auth w-fit">
                   <div className="relative h-[70px] flex items-center w-[70px]">
-                      <a className="video-play-button-auth ">
-                          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                            viewBox="0 0 104 104" enable-background="new 0 0 104 104" xml:space="preserve">
-                              <path fill="none" stroke="#FFFFFF" stroke-width="4" stroke-miterlimit="10" d="M26,35h52L52,81L26,35z"/>
-                              <circle class="video-play-circle-auth" fill="none" stroke="#e11d48" stroke-width="4" stroke-miterlimit="10" cx="52" cy="52" r="50"/>
+                      <p className="video-play-button-auth ">
+                          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                            viewBox="0 0 104 104" enableBackground="new 0 0 104 104" xmlSpace="preserve">
+                              <path fill="none" stroke="#FFFFFF" strokeWidth="4" strokeMiterlimit="10" d="M26,35h52L52,81L26,35z"/>
+                              <circle className="video-play-circle-auth" fill="none" stroke="#e11d48" strokeWidth="4" strokeMiterlimit="10" cx="52" cy="52" r="50"/>
                           </svg>
-                        <span class="video-play-outline-auth"></span>
-                      </a>
+                        <span className="video-play-outline-auth"></span>
+                      </p>
                     </div>
                 </Link>
             </div>

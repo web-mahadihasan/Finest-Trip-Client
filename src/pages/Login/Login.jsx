@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import logo from "../../assets/logo1.png";
 import { FiEye } from "react-icons/fi";
 import { FaRegEyeSlash } from "react-icons/fa";
@@ -13,6 +13,8 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const { loginUserWithEmail, setUser, loginWithGoogle, error, setError } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation()
+  console.log(location)
 
   // handle login 
   const handleLogin = (e) => {
@@ -67,14 +69,14 @@ const Login = () => {
             <div className="">
               <Link className="flex items-center gap-3 play-btn-auth w-fit">
                   <div className="relative h-[70px] flex items-center w-[70px]">
-                      <a className="video-play-button-auth ">
-                          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                            viewBox="0 0 104 104" enable-background="new 0 0 104 104" xml:space="preserve">
-                              <path fill="none" stroke="#FFFFFF" stroke-width="4" stroke-miterlimit="10" d="M26,35h52L52,81L26,35z"/>
-                              <circle class="video-play-circle-auth" fill="none" stroke="#e11d48" stroke-width="4" stroke-miterlimit="10" cx="52" cy="52" r="50"/>
+                      <p className="video-play-button-auth ">
+                          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                            viewBox="0 0 104 104" enableBackground="new 0 0 104 104" xmlSpace="preserve">
+                              <path fill="none" stroke="#FFFFFF" strokeWidth="4" strokeMiterlimit="10" d="M26,35h52L52,81L26,35z"/>
+                              <circle className="video-play-circle-auth" fill="none" stroke="#e11d48" strokeWidth="4" strokeMiterlimit="10" cx="52" cy="52" r="50"/>
                           </svg>
-                        <span class="video-play-outline-auth"></span>
-                      </a>
+                        <span className="video-play-outline-auth"></span>
+                      </p>
                     </div>
                 </Link>
             </div>
@@ -151,7 +153,7 @@ const Login = () => {
                 </div>
               </div>
               {/* Remember & Forgot  */}
-              <div className="text-white flex justify-between items-center lg:w-[75%] mx-auto">
+              <div className="text-white flex justify-between items-center xl:w-[75%] mx-auto">
                 <label className="cursor-pointer label">
                     <Checkbox color="green" className="border-white" />
                     <span className="label-text text-white text-base">
@@ -167,11 +169,11 @@ const Login = () => {
               </div>
             </form>
             {/* Anoter option  */}
-            <div className="divider divider-neutral text-white font-rubik text-sm w-full lg:w-[55%] mx-auto">
+            <div className="divider divider-neutral text-white font-rubik text-sm w-full lg:w-[75%] xl:w-[55%] mx-auto">
               Or Log in with Google
             </div>
             {/* Google Log in Sign in  */}
-            <div className="my-3 text-center w-full lg:w-[55%] mx-auto">
+            <div className="my-3 text-center w-full lg:w-[75%] xl:w-[55%] mx-auto">
               <button onClick={handleGoogleLogin} className="px-6 rounded py-2 border border-primary bg-blue-gray-800 w-full flex justify-center">
                 <FcGoogle size={28} />
               </button>

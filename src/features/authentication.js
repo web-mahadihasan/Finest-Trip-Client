@@ -11,50 +11,50 @@ const registerUser = (userData, createNewUser, updateUserProfile, setUser, error
     createNewUser(email, password)
       .then((result) => {
         setUser(result.user);
-        console.log(result.user)
-
+        
         userData = {
-            name, email, imageUrl, gender,
-            creationTime: result?.user?.metadata?.creationTime,
-            lastSignInTime: result?.user?.metadata?.lastSignInTime,
+          name, email, imageUrl, gender,
+          creationTime: result?.user?.metadata?.creationTime,
+          lastSignInTime: result?.user?.metadata?.lastSignInTime,
         };
-        updateUserProfile(updateData)
-          .then(() => {
-            fetch("http://localhost:3000/add-user", {
-              method: "POST",
-              headers: {
-                "content-type": "application/json",
-              },
-              body: JSON.stringify(userData),
-            })
-              .then((res) => res.json())
-              .then((data) => {
-                if (data.insertedId) {
-                  toast.success("Successfully create new user");
-                  navigate("/");
-                }
-                console.log(data);
-              });
-          })
-          .catch((err) => {
-            Swal.fire({
-              title: "Warning!",
-              text: "Failed!!  while Creating New user! try again",
-              icon: "error",
-            });
-          });
+        console.log(updateData)
+        // updateUserProfile(updateData)
+        //   .then(() => {
+        //     fetch("http://localhost:3000/add-user", {
+        //       method: "POST",
+        //       headers: {
+        //         "content-type": "application/json",
+        //       },
+        //       body: JSON.stringify(userData),
+        //     })
+        //       .then((res) => res.json())
+        //       .then((data) => {
+        //         if (data.insertedId) {
+        //           toast.success("Successfully create new user");
+        //           navigate("/");
+        //         }
+        //         console.log(data);
+        //       });
+        //   })
+        //   .catch((err) => {
+        //     Swal.fire({
+        //       title: "Warning!",
+        //       text: "Failed!!  while Creating New user! try again",
+        //       icon: "error",
+        //     });
+        //   });
         console.log(result.user);
       })
-      .catch((err) => {
-        Swal.fire({
-            title: "Warning!",
-            text: "Failed!!  while Creating New user! try again",
-            icon: "error",
-          });
+      .catch((err) => {    
         if ((err = "auth/email-already-in-use")) {
           setError({
             ...error,
             alreadyUsed: "Email already used, Please try Log in",
+          });
+          Swal.fire({
+            title: "Warning!",
+            text: "Failed!!  Email already used, Please try Log in",
+            icon: "error",
           });
         }
       });

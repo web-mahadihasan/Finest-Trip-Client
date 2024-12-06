@@ -28,7 +28,7 @@ const ApplyNowModal = ({visaData}) => {
                         <label className="block text-[16px] mb-1 font-rubik font-medium text-[#5d5b58]">
                             Your Register Email
                         </label>
-                        <input id="country" type="email" name="applyEmail" value={user?.email} required placeholder="john@example.com" className="w-full h-10 px-4 font-jost text-base transition-all border rounded outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 autofill:bg-white focus:border-primary-light focus:outline-none bg-white bg-opacity-90 max-w-lg" />
+                        <input id="country" type="email" name="applyEmail" value={user?.email} readOnly required placeholder="john@example.com" className="w-full h-10 px-4 font-jost text-base transition-all border rounded outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 autofill:bg-white focus:border-primary-light focus:outline-none bg-white bg-opacity-90 max-w-lg" />
                     </div>
                     {/* Name  */}
                     <div className="md:grid grid-cols-2 gap-3">
@@ -51,7 +51,7 @@ const ApplyNowModal = ({visaData}) => {
                             <label className="block text-[16px] mb-1 font-rubik font-medium text-[#5d5b58]">
                                 Visa Fee
                             </label>
-                            <input id="country" type="number" name="applyFee" value={visaFee} disabled required placeholder="john" className="w-full h-10 px-4 font-jost text-base transition-all border rounded outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 autofill:bg-white focus:border-primary-light focus:outline-none bg-white bg-opacity-90 max-w-lg" />
+                            <input id="country" type="number" name="applyFee" value={visaFee} readOnly required placeholder="john" className="w-full h-10 px-4 font-jost text-base transition-all border rounded outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 autofill:bg-white focus:border-primary-light focus:outline-none bg-white bg-opacity-90 max-w-lg" />
                         </div>
                         <div></div>
                     </div>

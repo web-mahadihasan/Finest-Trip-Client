@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import { Typewriter } from "react-simple-typewriter";
 import tripAdvisor from "../../assets/tripAdvisor1.png"
 import { LuPlane } from "react-icons/lu";
+import { Fade } from "react-awesome-reveal";
 
 const Slide3 = () => {
 
@@ -29,6 +30,9 @@ const Slide3 = () => {
                     />
                     </span>
                 </h1>
+                {/* <Fade cascade>
+                    <p>I will gently appear as I enter the viewport</p>
+                </Fade> */}
                 <p className="mb-5 font-jost text-lg">
                     Fast, reliable, and hassle-free visa processing services, providing expert guidance to help you reach your dream destinations with ease and confidence.                
                 </p>
@@ -37,14 +41,14 @@ const Slide3 = () => {
                         <Link className="p-1 border border-dashed border-primary rounded-lg"><Button variant="filled" className="bg-primary font-rubik font-medium text-base tracking-wide hover:bg-primary-dark duration-300 focus:bg-primary-dark flex items-center gap-2">Book a trip <LuPlane size={20}/></Button></Link>
                         <Link className="flex items-center gap-3 play-btn w-fit">
                                 <div className="relative h-[70px] flex items-center w-[70px]">
-                                    <a className="video-play-button top-0 left-0 ">
-                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                            viewBox="0 0 104 104" enable-background="new 0 0 104 104" xml:space="preserve">
-                                        <path fill="none" stroke="#FFFFFF" stroke-width="4" stroke-miterlimit="10" d="M26,35h52L52,81L26,35z"/>
-                                        <circle class="video-play-circle" fill="none" stroke="#e11d48" stroke-width="4" stroke-miterlimit="10" cx="52" cy="52" r="50"/>
+                                    <p className="video-play-button top-0 left-0 ">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                            viewBox="0 0 104 104" enableBackground="new 0 0 104 104" xmlSpace="preserve">
+                                        <path fill="none" stroke="#FFFFFF" strokeWidth="4" strokeMiterlimit="10" d="M26,35h52L52,81L26,35z"/>
+                                        <circle className="video-play-circle" fill="none" stroke="#e11d48" strokeWidth="4" strokeMiterlimit="10" cx="52" cy="52" r="50"/>
                                         </svg>
-                                        <span class="video-play-outline"></span>
-                                    </a>
+                                        <span className="video-play-outline"></span>
+                                    </p>
                                 </div>
                                     <span className="font-rubik text-lg font-medium">Watch Tour Videos</span>
                             </Link>

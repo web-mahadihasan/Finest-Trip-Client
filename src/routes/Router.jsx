@@ -24,7 +24,7 @@ const Router = createBrowserRouter([
             },
             {
                 path: "/add-visa",
-                element: <AddVisa/>
+                element: <PrivateRoutes> <AddVisa/> </PrivateRoutes>
             },
             {
                 path: "/all-visa",
@@ -32,15 +32,15 @@ const Router = createBrowserRouter([
             },
             {
                 path: "/my-added-visa",
-                element: <PrivateRoutes><MyAddedVisa/></PrivateRoutes>
+                element: <PrivateRoutes> <MyAddedVisa/> </PrivateRoutes>
             },
             {
                 path: "/my-visa-application",
-                element: <MyVisaApplication/>
+                element: <PrivateRoutes> <MyVisaApplication/> </PrivateRoutes>
             },
             {
                 path: "/visa-details/:id",
-                element: <VisaDetails/>,
+                element: <PrivateRoutes> <VisaDetails/> </PrivateRoutes>,
                 loader: async ({params}) =>  {
                     const faqRes = await fetch("/faq.json")
                     const faqData = await faqRes.json()
