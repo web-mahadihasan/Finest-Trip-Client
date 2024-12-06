@@ -13,12 +13,13 @@ const ApplyNowModal = ({visaData, onApplicationSubmit}) => {
         const fName = data.get("firstName");
         const lName = data.get("lastName");
         const fullName = `${fName} ${lName}`
-        
+        const {_id, ...rest} = visaData 
         const applicationData = {
-            ...visaData,  
+            ...rest,  
             userEmail: user.email, 
-            userName: user.displayName
+            userName: fullName
         }
+        console.log(applicationData)
         return onApplicationSubmit(applicationData)
     }
     return (

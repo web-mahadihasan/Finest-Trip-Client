@@ -51,7 +51,7 @@ const VisaApplicationCard = ({appliedVisaData, onCancel}) => {
                             <span className="text-black/65">{ageRestriction}</span>
                         </p>
                         <p className="text-lg">
-                            <span className="font-medium text-titleBlack/80">Application Method: </span>
+                            <span className="font-medium text-titleBlack/80">Apply Method: </span>
                             <span className="text-black/65">{applicationMethod}</span>
                         </p>
                 </div>

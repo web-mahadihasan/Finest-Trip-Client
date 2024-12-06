@@ -33,12 +33,13 @@ const Router = createBrowserRouter([
             },
             {
                 path: "/my-added-visa",
-                element: <PrivateRoutes> <MyAddedVisa/> </PrivateRoutes>
+                element: <PrivateRoutes> <MyAddedVisa/> </PrivateRoutes>,
+                loader: () =>  fetch("http://localhost:3000/visas")
             },
             {
                 path: "/my-visa-application",
                 element: <PrivateRoutes> <MyVisaApplication/> </PrivateRoutes>,
-                loader: () =>  fetch("http://localhost:3000/visa-application")
+                loader: () =>  fetch("http://localhost:3000/all-application")
             },
             {
                 path: "/visa-details/:id",

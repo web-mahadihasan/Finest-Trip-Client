@@ -2,12 +2,19 @@ import { Link, useLoaderData } from "react-router";
 import AsideToolBar from "../../components/AsideToolBar/AsideToolBar";
 import PageBanner from "../../components/PageBanner/PageBanner";
 import VisaApplicationCard from "../../components/VisaApplicationCard/VisaApplicationCard";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import { useAuth } from "../../provider/AuthProvider";
 
 const MyVisaApplication = () => {
     const loadedApplicationData = useLoaderData()
-    const [visaApplicationData, setVisaApplicationData] = useState(loadedApplicationData)
+    const [visaApplicationData, setVisaApplicationData] = useState(loadedApplicationData);
+    const {user} = useAuth()
+    
+    useEffect(() =>  {
+        const appliedVisa = loadedApplicationData.filter(prevData =>  prevData.userEmail ===  user.email)
+        setVisaApplicationData(appliedVisa)
+    }, [])
 
     const handleCancelApplication = (appliedId) =>  {
         Swal.fire({
@@ -15,20 +22,19 @@ const MyVisaApplication = () => {
             text: "Are you sure to cancel this application!",
             icon: "warning",
             showCancelButton: true,
-            confirmButtonColor: "#63AB45",
-            cancelButtonColor: "#d33",
+            confirmButtonColor: "#d33",
+            cancelButtonColor: "#63AB45",
             confirmButtonText: "Cancel Application",
-            cancelButtonText: "Close"
+            cancelButtonText: "Keep"
           }).then((result) => {
             if (result.isConfirmed) {
                 fetch(`http://localhost:3000/cancel-application/${appliedId}`, {
-                    method: "DELETE"
+                    method: "DELETE",
                 })
                 .then(res =>  res.json())
                 .then(data =>  {
-                    console.log(data)
                     if(data.deletedCount > 0){
-                        const remainingApplication = [...visaApplicationData].filter(prevData =>  prevData._id !==  appliedId)
+                        const remainingApplication = [...visaApplicationData].filter(prevData =>  prevData._id !==   appliedId)
                         setVisaApplicationData(remainingApplication)
                         Swal.fire({
                             title: "Success!",
@@ -36,7 +42,6 @@ const MyVisaApplication = () => {
                             icon: "success"
                           });
                     }
-                    console.log(data)
                 }).catch(err =>  {
                     Swal.fire({
                         title: "Falied",
@@ -55,11 +60,10 @@ const MyVisaApplication = () => {
                 <div className="col-span-2 xl:col-span-1">
                     <AsideToolBar/>
                 </div>
-                <div className="col-span-2">
+                <div className="col-span-2 space-y-6">
                     {
-                        visaApplicationData.length < 0 ? <h3 className="text-3xl font-rubik font-medium text-red-600">No Visa Application Yet. <Link to={"/all-visa"} className="text-blue-900 underline text-2xl">See our visa offer</Link> </h3> : (
-                            visaApplicationData.map(visaData =>  <VisaApplicationCard key={visaData._id} appliedVisaData={visaData} onCancel={handleCancelApplication}/>)
-                        )
+                        visaApplicationData.length > 0 ? (visaApplicationData.map(visaData =>  <VisaApplicationCard key={visaData._id} appliedVisaData={visaData} onCancel={handleCancelApplication}/>)) 
+                        : ( <h3 className="text-3xl font-rubik font-medium text-red-600">No Visa Application Yet. <Link to={"/all-visa"} className="text-blue-900 underline text-2xl">See our visa offer</Link> </h3> )
                     }
                 </div>
             </div>
