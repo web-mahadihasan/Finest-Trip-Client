@@ -20,7 +20,15 @@ const Router = createBrowserRouter([
             {
                 path: "/",
                 element: <Home/>,
-                loader: () =>  fetch("http://localhost:3000/visas")
+                loader: async () =>  {
+                    const visaRes = await fetch("http://localhost:3000/visas");
+                    const lastedVisa = await visaRes.json()
+
+                    const categoryRes = await fetch("/category.json")
+                    const categoryData = await categoryRes.json()
+
+                    return {lastedVisa, categoryData}
+                }
             },
             {
                 path: "/add-visa",

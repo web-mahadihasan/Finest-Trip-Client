@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router";
+import { useLoaderData, useLocation } from "react-router";
 import AsideToolBar from "../../components/AsideToolBar/AsideToolBar";
 import PageBanner from "../../components/PageBanner/PageBanner";
 import VisaCard from "../../components/VisaCard/VisaCard";
@@ -9,6 +9,8 @@ const AllVisa = () => {
     const {user} = useAuth()
     const allVisaData = useLoaderData()
     const [queryVisa, setQueryVisa] = useState(allVisaData)
+    const location = useLocation()
+    console.log(location)
     // Search functionality 
     const handleSearch = (query) =>  {
         const searchQuery = [...allVisaData].filter(prevData =>  prevData.userEmail ===  user.email)

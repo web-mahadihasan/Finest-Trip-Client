@@ -29,6 +29,9 @@ module.exports = withMT ({
     },
     plugins: [
       require('daisyui'),
+      function({ addVariant }) {
+        addVariant('not-last', '&:not(:last-child)');
+      },
     ],
 });
 
