@@ -1,6 +1,7 @@
 import { useLoaderData } from "react-router";
 import VisaCard from "../components/VisaCard/VisaCard";
 import Banner from "../components/Banner/Banner";
+import Success from "../components/AboutUs/Success";
 
 const Home = () => {
     const lastedVisa = useLoaderData()
@@ -18,6 +19,12 @@ const Home = () => {
                         lastedVisa.map(visa =>  <VisaCard key={visa._id} visa={visa}/>)
                     }
                 </div>
+            </div>
+
+
+            {/* About us  */}
+            <div className="">
+                <Success/>
             </div>
         </div>
     );

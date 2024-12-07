@@ -52,18 +52,39 @@ const MyVisaApplication = () => {
             }
           });
     }
+
+    // Search functionality 
+    const handleSearch = (query) =>  {
+        const searchQuery = loadedApplicationData.filter(prevData =>  prevData.userEmail ===  user.email)
+        const searchResult = [...searchQuery].filter(prev =>  (prev.countryName).toLowerCase() ===   (query).toLowerCase())
+        setVisaApplicationData(searchResult)
+        console.log(searchResult)
+    }
+    // filter by visa type 
+    const handleVisaTypeFilter = (query) =>  {
+        const filterQuery = loadedApplicationData.filter(prevData =>  prevData.userEmail ===  user.email)
+        const filterResult = [...filterQuery].filter(prev =>  (prev.visaType).toLowerCase() ===   (query).toLowerCase())
+        setVisaApplicationData(filterResult)
+    }
+    const handleSortByPrice = (accs, des) => {
+        console.log('sorted')
+    }
     return (
         <div>
             <PageBanner bgImg="https://i.ibb.co.com/2KHJjqV/Section-3.png" title="My Visa Applications" path="my-visa-applications"/>
             {/* Visa application card  */}
             <div className="container mx-auto px-4 grid col-span-1 xl:grid-cols-3 gap-6 my-24">
                 <div className="col-span-2 xl:col-span-1">
-                    <AsideToolBar/>
+                    <AsideToolBar handleSearch={handleSearch} handleVisaTypeFilter={handleVisaTypeFilter} handleSortByPrice={handleSortByPrice}/>
                 </div>
                 <div className="col-span-2 space-y-6">
                     {
-                        visaApplicationData.length > 0 ? (visaApplicationData.map(visaData =>  <VisaApplicationCard key={visaData._id} appliedVisaData={visaData} onCancel={handleCancelApplication}/>)) 
-                        : ( <h3 className="text-3xl font-rubik font-medium text-red-600">No Visa Application Yet. <Link to={"/all-visa"} className="text-blue-900 underline text-2xl">See our visa offer</Link> </h3> )
+                        visaApplicationData.length > 0 ? (visaApplicationData.map(visaData =>  
+                            <VisaApplicationCard key={visaData._id} 
+                            appliedVisaData={visaData} 
+                            onCancel={handleCancelApplication}/>
+                        )) 
+                        : ( <h3 className="text-3xl font-rubik font-medium text-red-600">No Visa Application Found. <Link to={"/all-visa"} className="text-blue-900 underline text-2xl">See our visa offer</Link> </h3> )
                     }
                 </div>
             </div>

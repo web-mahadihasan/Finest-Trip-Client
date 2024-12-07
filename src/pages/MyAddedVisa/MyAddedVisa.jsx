@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router";
+import { useLoaderData, useNavigate } from "react-router";
 import PageBanner from "../../components/PageBanner/PageBanner";
 import VisaCard from "../../components/VisaCard/VisaCard";
 import Swal from "sweetalert2";
@@ -13,6 +13,7 @@ const MyAddedVisa = () => {
     const updateRef = useRef()
     const [visaUpdateData, setVisaUpdateData] = useState({})
     const {user} = useAuth()
+    const navigate = useNavigate()
 
     // useEffect(() => {
     //     const myAdedData = loadedAddedVisa.filter(prevD =>  prevD.userEmail ===   user.email)
@@ -57,17 +58,44 @@ const MyAddedVisa = () => {
             }
           });
     }
-    const handleUpdate = (updateId) =>  {
+    const handleUpdateBtn = (updateId) =>  {
         updateRef.current.showModal()
         const filterVisa = loadedAddedVisa.find(prevD =>  prevD._id ===  updateId)
         setVisaUpdateData(filterVisa)
+    }
+    const handleUpdateInfoBtn = (updateData, id) =>  {
+        fetch(`http://localhost:3000/update-data/${id}`, {
+            method: "PUT",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(updateData)
+        })
+        .then(res =>  res.json())
+        .then(data =>  {
+            if(data.modifiedCount > 0) {
+                updateRef.current.close()
+                Swal.fire({
+                    title: "Success!",
+                    text: "Successfully updated visa information.",
+                    icon: "success"
+                  });
+                  navigate("/my-added-visa")
+            }
+        }).catch(error =>  {
+            Swal.fire({
+                title: "Falied",
+                text: "Failed to update visa information.",
+                icon: "error"
+              });
+        })
     }
     return (
         <div>
             <PageBanner bgImg="https://i.ibb.co.com/P1SZ96F/section-6.png" title="My Added Visa" path="my-added-visa"/>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 container mx-auto px-4 md:px-0">
                 {
-                    loadedAddedVisa.map(visa =>  <VisaCard key={visa._id} visa={visa} onDelete={handleDelete} onUpdate={handleUpdate}/>)
+                    loadedAddedVisa.map(visa =>  <VisaCard key={visa._id} visa={visa} onDelete={handleDelete} onUpdate={handleUpdateBtn}/>)
                 }
             </div>
             {/* // modal  */}
@@ -75,9 +103,9 @@ const MyAddedVisa = () => {
                 <dialog ref={updateRef} id="my_modal_4" className={`modal`} style={{background: "linear-gradient(125deg, rgba(99, 171, 69, 0.1) 0%, rgba(251, 176, 59, 0.1) 100%)"}}>
                     <div className="modal-box max-w-5xl">
                         <form method="dialog">
-                            <button className="btn btn-sm md:btn-md border border-primary btn-circle right-5 absolute top-4"><RiCloseLargeLine size={20}/></button>
+                            <button className="btn btn-sm md:btn-md border border-primary btn-circle right-5 absolute top-4"><RiCloseLargeLine  size={20}/></button>
                         </form>
-                        <UpdateVisaData prevVisaData={visaUpdateData} onApplicationSubmit={handleUpdate}/>
+                        <UpdateVisaData prevVisaData={visaUpdateData} onUpdateVisaInfo={handleUpdateInfoBtn}/>
                     </div>
                 </dialog>
             </div>

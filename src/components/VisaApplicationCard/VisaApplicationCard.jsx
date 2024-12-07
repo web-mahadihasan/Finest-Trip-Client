@@ -20,7 +20,6 @@ const VisaApplicationCard = ({appliedVisaData, onCancel}) => {
         userEmail,
         userName
     } = appliedVisaData || {}
-    console.log(appliedVisaData)
     
     return (
         <div className="rounded-md bg-base-100 gap-2 shadow grid grid-cols-1 md:grid-cols-3 border">
