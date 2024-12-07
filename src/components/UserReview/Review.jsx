@@ -22,7 +22,7 @@ const DisplayProject = ({reviewData}) =>  {
         1140: {
           perView: 2,
         },
-        770: {
+        640: {
           perView: 1,
         },
       },
@@ -58,8 +58,8 @@ const DisplayProject = ({reviewData}) =>  {
                         <div className="flex items-center justify-between">
                             <img src={left} alt="" className="w-16"/>
                             <div>
-                                <img src={review.image} alt="" className="w-16 rounded-full h-16"/>
-                                <p className="text-xl font-rubik font-medium text-titleBlack/75">{review.name}</p>
+                                <img src={review.image} alt="" className="w-16 rounded-full h-16 mx-auto"/>
+                                <p className="text-xl font-rubik font-medium text-titleBlack/75 text-center">{review.name}</p>
                             </div>
                             <img src={right} alt="" className="w-16"/>
                         </div>

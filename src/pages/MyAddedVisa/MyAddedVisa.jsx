@@ -1,4 +1,4 @@
-import { useLoaderData, useNavigate } from "react-router";
+import { Link, useLoaderData, useNavigate } from "react-router";
 import PageBanner from "../../components/PageBanner/PageBanner";
 import VisaCard from "../../components/VisaCard/VisaCard";
 import Swal from "sweetalert2";
@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import UpdateVisaData from "../../components/UpdateVisaData/UpdateVisaData";
 import { useAuth } from "../../provider/AuthProvider";
 import { RiCloseLargeLine } from "react-icons/ri";
+import { Button } from "@material-tailwind/react";
 
 
 const MyAddedVisa = () => {
@@ -93,10 +94,26 @@ const MyAddedVisa = () => {
     return (
         <div>
             <PageBanner bgImg="https://i.ibb.co.com/P1SZ96F/section-6.png" title="My Added Visa" path="my-added-visa"/>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 container mx-auto px-4 md:px-0">
-                {
-                    loadedAddedVisa.map(visa =>  <VisaCard key={visa._id} visa={visa} onDelete={handleDelete} onUpdate={handleUpdateBtn}/>)
-                }
+            
+            {/* My Added visa  */}
+            <div className="container mx-auto px-4 md:px-0 my-24">
+                <div className="flex md:items-center flex-col md:flex-row justify-between my-8">
+                    <div>
+                        <p className="flex items-center gap-1 p-2 bg-primary-light/35 w-fit text-titleBlack px-8 rounded-bl-[15px] rounded-tr-[15px]">
+                            <span className="uppercase font-rubik tracking-wide">Your Added Visa</span>
+                            {/* <span><SlPlane size={22}/></span> */}
+                        </p>
+                        <h3 className="text-2xl md:text-3xl xl:text-4xl font-medium my-4 font-rubik">Here's all visa Added by you</h3>
+                    </div>
+                    <div className="p-1 border border-dashed border-primary rounded-lg w-fit h-fit mb-6 md:mb-0">
+                        <Link to={"/add-visa"} className=""><Button variant="filled" className="bg-primary font-rubik font-medium text-sm tracking-wide hover:bg-primary-dark duration-300 focus:bg-primary-dark">Add more visa</Button></Link>
+                    </div>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {
+                        loadedAddedVisa.map(visa =>  <VisaCard key={visa._id} visa={visa} onDelete={handleDelete} onUpdate={handleUpdateBtn}/>)
+                    }
+                </div>
             </div>
             {/* // modal  */}
             <div className="modal">

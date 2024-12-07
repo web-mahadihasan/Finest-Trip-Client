@@ -32,8 +32,11 @@ const Router = createBrowserRouter([
 
                     const reviewRes = await fetch("/review.json")
                     const reviewData = await reviewRes.json()
+                    
+                    const blogsRes = await fetch("/blogs.json")
+                    const blogsData = await blogsRes.json()
 
-                    return {lastedVisa, categoryData, countryData, reviewData}
+                    return {lastedVisa, categoryData, countryData, reviewData, blogsData}
                 }
             },
             {

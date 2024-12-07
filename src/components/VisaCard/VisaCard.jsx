@@ -78,7 +78,7 @@ const VisaCard = ({visa={}, onDelete, onUpdate}) => {
                             <h5 className="font-medium text-sm tracking-wide">Starting From:</h5>
                             <h3 className="">
                                 <span className="text-2xl font-bold text-primary mr-3">$ {visaFee}</span>
-                                <span className="line-through text-xl font-semibold text-black/75">$ 220</span>
+                                {/* <span className="line-through text-xl font-semibold text-black/75">$ 220</span> */}
                             </h3>
                             <p className="text-xs">TAXES INCL/PERS</p>
                         </div>
