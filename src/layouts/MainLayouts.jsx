@@ -13,13 +13,21 @@ const MainLayouts = () => {
             <div>
                 <TopNavbar/>
             </div>
+
+            {/* Nav bar  */}
             <header className="top-0 sticky z-50">                
                 <Nav/>
             </header>
-            <div>
+
+            {/* Main content  */}
+            <main>
                 <Outlet/>
-            </div>
-            <Footer/>
+            </main>
+
+            {/* Footer Content  */}
+            <footer>
+                <Footer/>
+            </footer>
         </div>
     );
 };

@@ -33,7 +33,7 @@ const AboutUs = () => {
                             </div>)
                         }
                     </div>
-                    <Button variant="filled" className="bg-primary font-rubik text-sm font-medium tracking-wider my-4 hover:bg-primary-dark duration-300">See our visa offer</Button>
+                    <Button variant="filled" className="bg-primary font-rubik text-sm font-medium tracking-wider my-4 hover:bg-primary-dark duration-300">See Visa process</Button>
                 </div>
                 <div className="order-1 lg:order-2">
                     <img src={aboutBg} alt="" className="cursor-pointer"/>

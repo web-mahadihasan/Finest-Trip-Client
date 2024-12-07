@@ -22,7 +22,7 @@ const VisaCard = ({visa={}, onDelete, onUpdate}) => {
     } = visa || {}
 
     return (
-        <div className="card card-compact rounded-md bg-base-100 visa-card-shadow flex-col">
+        <div className="card card-compact flex-col rounded-md bg-base-100 visa-card-shadow">
             <div className="p-4 relative  overflow-hidden">
                 <figure className="rounded-md overflow-hidden">
                     <img
@@ -44,7 +44,7 @@ const VisaCard = ({visa={}, onDelete, onUpdate}) => {
                 </div>
                 
                 <h2 className="py-3 text-2xl font-rubik font-medium text-black/80">{visaTitle}</h2>
-                <div className="space-y-2">
+                <div className="space-y-2 flex-1">
                     <p className="text-base">
                         <span className="font-medium">Visa Type: </span>
                         <span className="text-black/65">{visaType}</span>

@@ -1,0 +1,93 @@
+[
+    {
+      "id": 1,
+      "country_name": "Canada",
+      "visa_type": ["Tourist Visa", "Student Visa", "Work Permit"],
+      "country_image": "https://flagcdn.com/w320/ca.png"
+    },
+    {
+      "id": 2,
+      "country_name": "United States",
+      "visa_type": ["Business Visa", "Visitor Visa", "Work Permit"],
+      "country_image": "https://flagcdn.com/w320/us.png"
+    },
+    {
+      "id": 3,
+      "country_name": "England",
+      "visa_type": ["Student Visa", "Tourist Visa", "Official Visa"],
+      "country_image": "https://flagcdn.com/w320/gb.png"
+    },
+    {
+      "id": 4,
+      "country_name": "Australia",
+      "visa_type": ["Work Permit", "Visitor Visa", "Business Visa"],
+      "country_image": "https://flagcdn.com/w320/au.png"
+    },
+    {
+      "id": 5,
+      "country_name": "Germany",
+      "visa_type": ["Student Visa", "Official Visa", "Tourist Visa"],
+      "country_image": "https://flagcdn.com/w320/de.png"
+    },
+    {
+      "id": 6,
+      "country_name": "France",
+      "visa_type": ["Tourist Visa", "Visitor Visa", "Business Visa"],
+      "country_image": "https://flagcdn.com/w320/fr.png"
+    },
+    {
+      "id": 7,
+      "country_name": "India",
+      "visa_type": ["Official Visa", "Tourist Visa", "Business Visa"],
+      "country_image": "https://flagcdn.com/w320/in.png"
+    },
+    {
+      "id": 8,
+      "country_name": "Japan",
+      "visa_type": ["Tourist Visa", "Work Permit", "Student Visa"],
+      "country_image": "https://flagcdn.com/w320/jp.png"
+    },
+    {
+      "id": 9,
+      "country_name": "China",
+      "visa_type": ["Business Visa", "Tourist Visa", "Official Visa"],
+      "country_image": "https://flagcdn.com/w320/cn.png"
+    },
+    {
+      "id": 10,
+      "country_name": "Brazil",
+      "visa_type": ["Visitor Visa", "Work Permit", "Tourist Visa"],
+      "country_image": "https://flagcdn.com/w320/br.png"
+    },
+    {
+      "id": 11,
+      "country_name": "Italy",
+      "visa_type": ["Tourist Visa", "Student Visa", "Visitor Visa"],
+      "country_image": "https://flagcdn.com/w320/it.png"
+    },
+    {
+      "id": 12,
+      "country_name": "South Korea",
+      "visa_type": ["Official Visa", "Student Visa", "Tourist Visa"],
+      "country_image": "https://flagcdn.com/w320/kr.png"
+    },
+    {
+      "id": 13,
+      "country_name": "New Zealand",
+      "visa_type": ["Tourist Visa", "Business Visa", "Work Permit"],
+      "country_image": "https://flagcdn.com/w320/nz.png"
+    },
+    {
+      "id": 14,
+      "country_name": "Russia",
+      "visa_type": ["Visitor Visa", "Business Visa", "Official Visa"],
+      "country_image": "https://flagcdn.com/w320/ru.png"
+    },
+    {
+      "id": 15,
+      "country_name": "South Africa",
+      "visa_type": ["Tourist Visa", "Student Visa", "Business Visa"],
+      "country_image": "https://flagcdn.com/w320/za.png"
+    }
+  ]
+  
