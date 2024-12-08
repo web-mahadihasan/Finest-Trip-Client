@@ -22,7 +22,7 @@ const VisaCard = ({visa={}, onDelete, onUpdate}) => {
     } = visa || {}
 
     return (
-        <div className="card card-compact flex-col rounded-md bg-base-100 visa-card-shadow">
+        <div data-aos="fade-up" className="card card-compact flex-col rounded-md bg-base-100 visa-card-shadow">
             <div className="p-4 relative  overflow-hidden">
                 <figure className="rounded-md overflow-hidden border border-primary-light/40">
                     <img

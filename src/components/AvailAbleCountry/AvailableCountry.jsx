@@ -9,7 +9,7 @@ const AvailableCountry = ({country}) => {
         query: country_name
     }
     return (
-        <div className="p-5 border bg-base-100 rounded-lg hover:border-primary duration-500">
+        <div data-aos="flip-left" className="p-5 border bg-base-100 rounded-lg hover:border-primary duration-500">
             <img src={country_image} alt="" className="w-14 rounded-full h-14"/>
             <h3 className="font-rubik text-xl font-medium my-3 text-titleBlack">{country_name}</h3>
             <ul className="list-inside ml-4 mb-3 space-y-1">

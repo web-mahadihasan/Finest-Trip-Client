@@ -24,7 +24,6 @@ const Login = () => {
 
     loginUserWithEmail(email, password)
       .then((result) => {
-        console.log(result.user)
         setUser(result.user);
         toast.success("User Successfully sing in");
         navigate(location.state ? location.state : "/");

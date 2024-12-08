@@ -7,7 +7,7 @@ import { Link } from "react-router";
 const RightBlogs = ({blog}) => {
     const {posted_date, post_by, title, body, image} = blog || {}
     return (
-        <div className="">
+        <div data-aos="zoom-in-up" className="">
             <div className="card-compact rounded-xl grid grid-cols-3 bg-base-100 w-full border">
                 <figure className="col-span-1">
                     <img

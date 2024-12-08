@@ -6,7 +6,7 @@ import { Link } from "react-router";
 const VisaCategory = ({category}) => {
     const {title, short_description, image, icon} = category || {}
     return (
-        <div className="grid grid-cols-4 gap-6 p-5 border border-base-300 shadow">
+        <div data-aos="zoom-in" className="grid grid-cols-4 gap-6 p-5 border border-base-300 shadow">
             <div className="col-span-5 lg:col-span-2 w-full overflow-hidden rounded-md max-h-full">
                 <img src={image} alt={title + "image"} className="h-full w-full rounded-md hover:scale-110 duration-300"/>
             </div>

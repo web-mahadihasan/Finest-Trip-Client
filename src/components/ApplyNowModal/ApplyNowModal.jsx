@@ -5,6 +5,7 @@ import { useAuth } from "../../provider/AuthProvider";
 const ApplyNowModal = ({visaData, onApplicationSubmit}) => {
     const {user} = useAuth()
     const {visaFee, countryName} = visaData || {};
+    const date = new Date().toLocaleString().split(',')[0]
 
     const handleApplicationForm = (e) =>  {
         e.preventDefault()
@@ -17,7 +18,8 @@ const ApplyNowModal = ({visaData, onApplicationSubmit}) => {
         const applicationData = {
             ...rest,  
             userEmail: user.email, 
-            userName: fullName
+            userName: fullName,
+            appliedDate: date
         }
         console.log(applicationData)
         return onApplicationSubmit(applicationData)
@@ -35,13 +37,13 @@ const ApplyNowModal = ({visaData, onApplicationSubmit}) => {
         </h2>
             {/* Visa application form  */}
             <div className="max-w-lg mx-auto my-10">
-                <form onSubmit={handleApplicationForm} className="space-y-4">
+                <form onSubmit={handleApplicationForm} className="space-y-6">
                     {/* Email  */}
                     <div>
                         <label className="block text-[16px] mb-1 font-rubik font-medium text-[#5d5b58]">
                             Your Register Email
                         </label>
-                        <input id="country" type="email" name="applyEmail" value={user?.email} readOnly required placeholder="john@example.com" className="w-full h-10 px-4 font-jost text-base transition-all border rounded outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 autofill:bg-white focus:border-primary-light focus:outline-none bg-white bg-opacity-90 max-w-lg" />
+                        <input id="country" type="email" name="applyEmail" defaultValue={user?.email} readOnly required placeholder="john@example.com" className="w-full h-10 px-4 font-jost text-base transition-all border rounded outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 autofill:bg-white focus:border-primary-light focus:outline-none bg-white bg-opacity-90 max-w-lg" />
                     </div>
                     {/* Name  */}
                     <div className="md:grid grid-cols-2 gap-3">
@@ -49,24 +51,29 @@ const ApplyNowModal = ({visaData, onApplicationSubmit}) => {
                             <label className="block text-[16px] mb-1 font-rubik font-medium text-[#5d5b58]">
                                 First Name
                             </label>
-                            <input id="country" type="text" name="firstName" required placeholder="john" className="w-full h-10 px-4 font-jost text-base transition-all border rounded outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 autofill:bg-white focus:border-primary-light focus:outline-none bg-white bg-opacity-90 max-w-lg" />
+                            <input id="fname" type="text" name="firstName" required placeholder="john" className="w-full h-10 px-4 font-jost text-base transition-all border rounded outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 autofill:bg-white focus:border-primary-light focus:outline-none bg-white bg-opacity-90 max-w-lg" />
                         </div>
                         <div>
                             <label className="block text-[16px] mb-1 font-rubik font-medium text-[#5d5b58]">
                                 Last Name
                             </label>
-                            <input id="country" type="text" name="lastName" required placeholder="Doe" className="w-full h-10 px-4 font-jost text-base transition-all border rounded outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 autofill:bg-white focus:border-primary-light focus:outline-none bg-white bg-opacity-90 max-w-lg" />
+                            <input id="lName" type="text" name="lastName" required placeholder="Doe" className="w-full h-10 px-4 font-jost text-base transition-all border rounded outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 autofill:bg-white focus:border-primary-light focus:outline-none bg-white bg-opacity-90 max-w-lg" />
                         </div>
                     </div>
-                    {/* Fee  */}
+                    
                     <div className="md:grid grid-cols-2 gap-3">
+                        <div>
+                            <label className="block text-[16px] mb-1 font-rubik font-medium text-[#5d5b58]">
+                                Current Date
+                            </label>
+                            <input id="currentDate" type="text" name="currentDate" required defaultValue={date} readOnly className="w-full h-10 px-4 font-jost text-base transition-all border rounded outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 autofill:bg-white focus:border-primary-light focus:outline-none bg-white bg-opacity-90 max-w-lg" />
+                        </div>
                         <div>
                             <label className="block text-[16px] mb-1 font-rubik font-medium text-[#5d5b58]">
                                 Visa Fee
                             </label>
-                            <input id="country" type="number" name="applyFee" value={visaFee} readOnly required placeholder="john" className="w-full h-10 px-4 font-jost text-base transition-all border rounded outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 autofill:bg-white focus:border-primary-light focus:outline-none bg-white bg-opacity-90 max-w-lg" />
+                            <input id="visaFee" type="text" name="VisaFee" required readOnly defaultValue={visaFee} className="w-full h-10 px-4 font-jost text-base transition-all border rounded outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 autofill:bg-white focus:border-primary-light focus:outline-none bg-white bg-opacity-90 max-w-lg" />
                         </div>
-                        <div></div>
                     </div>
 
                     {/* Submit  */}

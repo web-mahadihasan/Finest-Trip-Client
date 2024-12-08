@@ -39,4 +39,12 @@ a.active{
   .play-icon {
     pointer-events: none;
   }
+  .theme-light {
+    background-color: white;
+    color: black;
+  }
   
+  .theme-dark {
+    background-color: #1a202c;
+    color: white;
+  }

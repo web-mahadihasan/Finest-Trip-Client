@@ -17,7 +17,7 @@ const Success = () => {
             {/* Success count  */}
             <div className="grid grid-cols-1 gap-5 md:grid-cols-4 py-8 md:border-y md:border-base-300 my-6">
                 {
-                    successInfo.map((success, idx) =>  <div key={idx} className={`flex items-center gap-2 justify-center ${ idx ===  3? "border-r-0" : "border-r-2"}`}>
+                    successInfo.map((success, idx) =>  <div data-aos="fade-up" key={idx} className={`flex items-center gap-2 justify-center ${ idx ===  3? "border-r-0" : "border-r-2"}`}>
                         <img src={success.icon} alt="" />
                         <div className="">
                             <span className="text-4xl font-rubik font-bold">
@@ -29,7 +29,7 @@ const Success = () => {
                     </div>)
                 }
             </div>
-            <h5 className="text-center flex gap-6 justify-center items-center font-jost font-medium text-titleBlack/70">
+            <h5 data-aos="fade-up" className="text-center flex gap-6 justify-center items-center font-jost font-medium text-titleBlack/70">
                 <span className="text-xl text-titleBlack">Excellent! </span>
                 <span>
                     5.0 Rating out of 5.0 based on

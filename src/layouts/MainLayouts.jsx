@@ -3,10 +3,18 @@ import Footer from "../components/Footer/Footer";
 import TopNavbar from "../components/Navbar/TopNavbar";
 import { Toaster } from "react-hot-toast";
 import Nav from "../components/Navbar/Nav";
-
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from "react";
 
 const MainLayouts = () => {
+
+    useEffect(() => {
+        AOS.init({
+             duration: 800,
+             once: false,
+           })
+     }, [])
     return (
         <div>
             <Toaster/>

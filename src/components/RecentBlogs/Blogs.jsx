@@ -8,7 +8,7 @@ const Blogs = ({blog}) => {
     const {posted_date, post_by, title, body, image} = blog || {}
     return (
         <div>
-            <div className="card card-compact bg-base-100 w-full border shadow">
+            <div data-aos="zoom-in-up" className="card card-compact bg-base-100 w-full border shadow">
                 <figure>
                     <img
                     src={image}

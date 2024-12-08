@@ -6,32 +6,30 @@ const VisaApplicationCard = ({appliedVisaData, onCancel}) => {
 
     const {
         _id,
-        visaTitle,
         countryImage,
         countryName,
         visaType,
         processingTime,
-        requiredDocuments,
-        description,
         ageRestriction,
         visaFee,
         validity,
         applicationMethod,
         userEmail,
-        userName
+        userName,
+        appliedDate
     } = appliedVisaData || {}
     
     return (
-        <div className="rounded-md bg-base-100 gap-2 shadow grid grid-cols-1 md:grid-cols-3 border">
+        <div data-aos="fade-up" className="rounded-md bg-base-100 gap-2 shadow grid grid-cols-1 md:grid-cols-3 border">
             <div className="col-span-1 h-full w-full">
                 <figure className="max-h-full">
                     <img
                     src={countryImage}
-                    alt={visaTitle} className="w-full max-h-[240px] md:min-h-[440px] rounded-l-md lg:min-h-[301px] lg:max-h-[320px]"/>
+                    alt={countryName} className="w-full max-h-[240px] md:min-h-[440px] rounded-l-md lg:min-h-[301px] lg:max-h-[320px]"/>
                 </figure>
             </div>
             <div className="col-span-2  px-4">
-            <h2 className="py-3 text-2xl font-rubik font-medium text-black/80">{visaTitle}</h2>
+            <h2 className="py-3 text-2xl font-rubik font-medium text-black/80">Applied for {countryName}</h2>
                 <div className="pt-1 font-jost flex flex-wrap items-center gap-4">
                         <p className="text-lg">
                             <span className="font-medium text-titleBlack/80">Processing Time: </span>
@@ -61,7 +59,7 @@ const VisaApplicationCard = ({appliedVisaData, onCancel}) => {
                     </p>
                     <p className="text-lg">
                         <span className="font-medium text-titleBlack">Applied Date: </span>
-                        <span className="text-black/65">12-16-2024</span>
+                        <span className="text-black/65">{appliedDate}</span>
                     </p>
                 </div>
 

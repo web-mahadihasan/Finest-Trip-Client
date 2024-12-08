@@ -2,7 +2,8 @@ import { Button } from "@material-tailwind/react";
 import { Link } from "react-router";
 import { Typewriter } from "react-simple-typewriter";
 import tripAdvisor from "../../assets/tripAdvisor1.png"
-
+import Lottie from "lottie-react";
+import lottie1 from "../../../public/lottie1.json"
 
 const Slide1 = () => {
 
@@ -16,7 +17,10 @@ const Slide1 = () => {
             <div className="hero-content text-neutral-content text-center">
                 <div className="max-w-3xl">
                 <h1 className="mb-5 text-3xl md:text-5xl font-extrabold font-rubik tracking-wider flex flex-col text-white gap-2">
-                    <span>Let’s Explore Your </span>
+                    <div className="w-28 mx-auto">
+                        <Lottie animationData={lottie1} />
+                    </div>
+                    <span data-aos="zoom-in-down">Let’s Explore Your </span>
                     <span className="text-primary">
                     <Typewriter
                         words={['Student Visa.', 'Holiday Trip.', 'Honeymoon Trip.', 'Family Trip.']}
@@ -29,10 +33,10 @@ const Slide1 = () => {
                     />
                     </span>
                 </h1>
-                <p className="mb-5 font-jost text-lg">
+                <p data-aos="zoom-in-up" className="mb-5 font-jost text-lg">
                     Fast, reliable, and hassle-free visa processing services, providing expert guidance to help you reach your dream destinations with ease and confidence.                
                 </p>
-                <div className="flex items-center max-w-lg mx-auto mt-8 justify-between">
+                <div data-aos="zoom-in-up" className="flex items-center max-w-lg mx-auto mt-8 justify-between">
                     <div className="flex items-center">
                         <img src={tripAdvisor} alt="Trust Advisor" className="w-24"/>
                         <div className="text-left">

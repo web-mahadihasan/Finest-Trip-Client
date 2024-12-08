@@ -15,14 +15,10 @@ const Slide2 = () => {
             <div className="hero-content text-neutral-content text-center">
                 <div className="max-w-7xl gap-6 grid grid-cols-1 md:grid-cols-2 items-center">
                     <div className="text-left">
-                        <h3 className="mb-5 text-3xl md:text-4xl lg:text-5xl font-bold font-rubik tracking-wider flex flex-col text-white gap-2">Visa Made Easy Dreams Made Possible</h3>
-                        <p className="mb-5 font-jost text-lg">Effortless visa processing, expert guidance, and personalized support to turn your travel dreams into reality</p>
-                        <div className="flex lg:items-center gap-8 lg:flex-row flex-col">
+                        <h3 data-aos="zoom-in-up" className="mb-5 text-3xl md:text-4xl lg:text-5xl font-bold font-rubik tracking-wider flex flex-col text-white gap-2">Visa Made Easy Dreams Made Possible</h3>
+                        <p data-aos="zoom-in-up" className="mb-5 font-jost text-lg">Effortless visa processing, expert guidance, and personalized support to turn your travel dreams into reality</p>
+                        <div data-aos="zoom-out-up" className="flex lg:items-center gap-8 lg:flex-row flex-col">
                             <Link to={"/all-visa"}><Button className="bg-primary text-base font-medium font-rubik tracking-wide hover:bg-primary-dark duration-300">See Visa</Button></Link>
-                            {/* <Link>
-                                <span></span>
-                                <span>Watch Tour Videos</span>
-                            </Link> */}
                             <Link className="flex items-center gap-3 play-btn w-fit">
                                 <div className="relative h-[70px] flex items-center w-[70px]">
                                     <p className="video-play-button top-0 left-0 ">
@@ -39,7 +35,7 @@ const Slide2 = () => {
 
                         </div>
                     </div>
-                    <div className="w-full">
+                    <div data-aos="fade-down-left" className="w-full">
                         <div className="max-w-[450px] h-[400px] md:h-[500px] shadow-lg rounded-xl lg:h-[550px] mx-auto" style={{ backgroundImage: "url(https://i.ibb.co.com/PzGq9Vr/bannerBg.png)",}}>
                             <img src="https://i.ibb.co.com/r7Q8Jg1/home2-about-img1.webp" alt="" className="rounded-xl w-full h-full" />
                         </div>

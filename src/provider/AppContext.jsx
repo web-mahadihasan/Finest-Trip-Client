@@ -3,35 +3,31 @@ import { createContext, useContext, useEffect, useState } from "react";
 export const AppContextProvier = createContext(null)
 const AppContext = ({children}) => {
     const [openMenu, setOpenMenu] = useState(false);
-    const [theme, setTheme] = useState("light");
+    
+    const [isDarkMode, setIsDarkMode] = useState(false);
 
-    const darkModeHandler = () => {
-
-         if(theme ===   "light"){
-            setTheme("dark")
-            return
+    const toggleTheme = () => {
+        setIsDarkMode(!isDarkMode);
+        if (!isDarkMode) {
+        document.documentElement.classList.add('theme-dark');
+        } else {
+        document.documentElement.classList.remove('theme-dark');
         }
-            setTheme("light")
-        // document.body.classList.toggle("dark");
-    }
-    console.log(theme)
-    useEffect(() =>  {
-        document.documentElement.setAttribute('data-theme', theme);
-        // localStorage.setItem("theme", theme);
-        console.log(theme)
-    }, [theme])
+    };
 
 
     const appContextInfo = {
         openMenu,
         setOpenMenu,
-        theme,
-        setTheme,
-        darkModeHandler
+        toggleTheme,
+        isDarkMode,
+        setIsDarkMode
     }
     return (
         <AppContextProvier.Provider value={appContextInfo}>
-            {children}
+   
+                {children}
+      
         </AppContextProvier.Provider>
     );
 };

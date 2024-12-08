@@ -16,7 +16,7 @@ const Slide3 = () => {
             <div className="hero-overlay bg-opacity-60"></div>
             <div className="hero-content text-neutral-content text-center">
                 <div className="max-w-3xl">
-                <h1 className="mb-5 text-3xl md:text-5xl font-extrabold font-rubik tracking-wider flex flex-col text-white gap-2">
+                <h1 data-aos="zoom-in-up" className="mb-5 text-3xl md:text-5xl font-extrabold font-rubik tracking-wider flex flex-col text-white gap-2">
                     <span>Let’s Explore Your </span>
                     <span className="text-primary">
                     <Typewriter
@@ -30,14 +30,11 @@ const Slide3 = () => {
                     />
                     </span>
                 </h1>
-                {/* <Fade cascade>
-                    <p>I will gently appear as I enter the viewport</p>
-                </Fade> */}
-                <p className="mb-5 font-jost text-lg">
+                <p data-aos="zoom-out-up" className="mb-5 font-jost text-lg">
                     Fast, reliable, and hassle-free visa processing services, providing expert guidance to help you reach your dream destinations with ease and confidence.                
                 </p>
                 <div className="max-w-lg mx-auto mt-8">
-                    <div className="flex items-center justify-between">
+                    <div data-aos="zoom-out-up" className="flex items-center justify-between">
                         <Link className="p-1 border border-dashed border-primary rounded-lg"><Button variant="filled" className="bg-primary font-rubik font-medium text-base tracking-wide hover:bg-primary-dark duration-300 focus:bg-primary-dark flex items-center gap-2">Book a trip <LuPlane size={20}/></Button></Link>
                         <Link className="flex items-center gap-3 play-btn w-fit">
                                 <div className="relative h-[70px] flex items-center w-[70px]">

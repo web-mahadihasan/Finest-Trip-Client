@@ -47,8 +47,6 @@ const Register = () => {
     const updateData = { displayName: name, photoURL: imageUrl };
     const checkPassword = passwordRegex.test(password)
 
-    console.log(imageUrl)
-
     if(checkPassword){
       createNewUser(email, password)
       .then((result) => {

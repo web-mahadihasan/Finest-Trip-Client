@@ -14,8 +14,8 @@ import { useState } from "react";
 
 const Nav = () => {
     const {user} = useAuth();
-    const {setOpenMenu, setTheme, darkModeHandler} = useAppContext();
-    // const [darkTheme, setDarkTheme] = useState(false)
+    const {setOpenMenu, toggleTheme} = useAppContext();
+   
     const navLinks = [
         { "path": "/", "element": "Home" },
         { "path": "/all-visa", "element": "All Visas" },
@@ -24,16 +24,7 @@ const Nav = () => {
         { "path": "/my-visa-application", "element": "Visa Applications" }
       ]
 
-    // const toggleTheme = () => {
-    //     // setDarkTheme(!darkTheme)
-    //     // console.log(theme)
-    //     // if(darkTheme ===   true){
-    //     //     setTheme('dark')
-    //     // }else{
-    //     //     setTheme('light')
-    //     // }
-    //     setTheme((prevTheme) => (prevTheme ===  'light' ? 'dark' : 'light'));
-    //   };
+
             
     return (
         <div className=" w-full border-b border-base-100 shadow-md bg-white z-50 backdrop-blur-2xl">
@@ -45,7 +36,7 @@ const Nav = () => {
                     </h3>
                 </div>
                 {/* Nav Links  */}
-                <div className="hidden lg:block">
+                <div  className="hidden lg:block">
                     <ul className="font-rubik flex items-center gap-3">
                         {
                             navLinks.map(link =>  <li key={link.element}>
@@ -54,14 +45,14 @@ const Nav = () => {
                         }
                     </ul>
                 </div>
-                <div className="flex items-center gap-3">
+                <div  className="flex items-center gap-3">
                     <div className="px-2 py-2 cursor-pointer border border-transparent hover:border-gray-500 duration-500 rounded-full hover:bg-base-300 ">
                         <img src={appsSvg} alt="" />
                     </div>
 
                     {/* Theme control  */}
                     <div>
-                    <button onClick={darkModeHandler} className="border-x px-2 border-base-300">
+                    <button onClick={toggleTheme} className="border-x px-2 border-base-300">
                         <label className="swap swap-rotate p-2 border border-transparent hover:border-gray-500 duration-500 rounded-full hover:bg-base-300 ">
                             <input type="checkbox" className="theme-controller" value="synthwave" />
                             {/* sun icon */}
