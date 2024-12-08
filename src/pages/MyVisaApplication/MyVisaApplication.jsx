@@ -64,7 +64,7 @@ const MyVisaApplication = () => {
 
   // Search functionality
   const handleSearch = (query) => {
-    const searchQuery = loadedApplicationData.filter(
+    const searchQuery = [...visaApplicationData].filter(
       (prevData) => prevData.userEmail === user.email
     );
     const searchResult = [...searchQuery].filter(
@@ -75,7 +75,7 @@ const MyVisaApplication = () => {
   };
   // filter by visa type
   const handleVisaTypeFilter = (query) => {
-    const filterQuery = loadedApplicationData.filter(
+    const filterQuery = [...visaApplicationData].filter(
       (prevData) => prevData.userEmail === user.email
     );
     const filterResult = [...filterQuery].filter(
