@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router";
+import { Link, useLoaderData, useLocation, useNavigate } from "react-router";
 import logo from "../../assets/logo1.png";
 import { FiEye } from "react-icons/fi";
 import { FaRegEyeSlash } from "react-icons/fa";
@@ -14,6 +14,7 @@ import "../Login/login.css"
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const { createNewUser, updateUserProfile, loginWithGoogle, setUser, error, setError } = useAuth();
+  const location = useLocation()
   const navigate = useNavigate();
   const [imageUrl, setImageUrl] = useState("");
   const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{6,}$/;
@@ -33,7 +34,7 @@ const Register = () => {
       .then((res) => res.json())
       .then((data) => setImageUrl(data.data?.display_url));
   };
-
+  
   // Hanele Register 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -44,16 +45,19 @@ const Register = () => {
     const password = data.get("password");
     const gender = data.get("gender");
     const updateData = { displayName: name, photoURL: imageUrl };
-
     const checkPassword = passwordRegex.test(password)
-    
-    createNewUser(email, password)
+
+    console.log(imageUrl)
+
+    if(checkPassword){
+      createNewUser(email, password)
       .then((result) => {
         setUser(result.user);
         updateUserProfile(updateData)
           .then(() => {
             toast.success("Successfully create new user");
-            navigate("/");
+            navigate(location.state? location.state : "/");
+            console.log(result.user)
           })
           .catch((err) => {
             Swal.fire({
@@ -73,7 +77,9 @@ const Register = () => {
           });
         }
       });
-    
+    }else{
+      setError({...error, invalidPass: "Password must be one uppercase, one lower case, one number and at least 6 digit"})
+    }  
   };
   // handle google login 
   const handleGoogleLogin = () => {
@@ -83,7 +89,7 @@ const Register = () => {
         console.log(result.user);
         setUser(result.user);
         toast.success("User Successfully sing in");
-        navigate("/");
+        navigate(location.state? location.state : "/");
       })
       .catch((err) => {
         console.log(err);
@@ -137,6 +143,7 @@ const Register = () => {
                   type="text"
                   name="name"
                   id="name"
+                  required
                   placeholder="Your Name"
                   className="px-6 py-2 rounded bg-white/85 shadow-md text-black font-rubik font-normal border-none focus:ring-1 focus:ring-primary focus:shadow-lg outline-none w-full placeholder-blue-gray-700"
                 />
@@ -153,6 +160,7 @@ const Register = () => {
                   type="email"
                   name="email"
                   id="email"
+                  required
                   placeholder="john@example.com"
                   className="px-6 py-2 rounded bg-white/85 shadow-md text-black font-rubik font-normal border-none focus:ring-1 focus:ring-primary focus:shadow-lg outline-none w-full placeholder-blue-gray-700"
                 />
@@ -165,14 +173,17 @@ const Register = () => {
                 >
                   Create a password
                 </label>
-                {/* <Input label="Username" className="placeholder-white bg-red-500" /> */}
                 <input
                   type={showPassword ? "text" : "password"}
                   name="password"
                   id="password"
+                  required
                   placeholder="password"
                   className="px-6 py-2 rounded bg-white/85 shadow-md text-black font-rubik font-normal border-none focus:ring-1 focus:ring-primary focus:shadow-lg outline-none w-full placeholder-blue-gray-700"
                 />
+                {
+                  error.invalidPass && <p className="text-sm font-jost text-red-500">{error.invalidPass}</p>
+                }
                 <div
                   onClick={() => setShowPassword(!showPassword)}
                   className="absolute top-8 right-3 text-black"
@@ -220,6 +231,7 @@ const Register = () => {
                   onChange={handleImageUpload}
                   type="file"
                   id="photo"
+                  required
                   className="file-input shadow-md border-none outline-none w-full bg-white/75"
                 />
               </div>

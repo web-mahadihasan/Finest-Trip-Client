@@ -67,7 +67,7 @@ const VisaDetails = () => {
     }
     return (
         <div>
-            <PageBanner bgImg="https://i.ibb.co.com/RPbNqx9/Section-4.png" title={visaTitle} path="visa-details"/>
+            <PageBanner bgImg="https://i.ibb.co.com/RPbNqx9/Section-4.png" title={`Details About ` + countryName +" " + visaType} path="visa-details"/>
             <div className="container mx-auto px-4 md:px-0 mt-16 min-h-screen">
             <Link to={-1} className="flex items-center gap-2 py-2 px-4 border w-fit rounded-md border-primary-light font-jost font-medium my-2">
                 <span><GoArrowLeft size={18}/></span>
@@ -75,7 +75,7 @@ const VisaDetails = () => {
             </Link>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 <div className="lg:col-span-2">
-                    <img src={countryImage} alt={countryName} className="w-full h-[350px] md:h-[400px] xl:h-[550px] rounded-md"/>
+                    <img src={countryImage} alt={countryName} className="w-full h-[300px] md:h-[320px] xl:h-[380px] rounded-md"/>
                     <div className="flex items-center gap-1 my-5">
                         <img src={location} alt="" className="w-9"/>
                         <p className="font-rubik text-3xl font-bold text-titleBlack">{countryName}</p>

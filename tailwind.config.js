@@ -1,6 +1,7 @@
 const withMT = require("@material-tailwind/react/utils/withMT");
 /** @type {import('tailwindcss').Config} */
 module.exports = withMT ({
+    darkMode: "class",
     content: [
       "./index.html",
       "./src/**/*.{js,ts,jsx,tsx}",
@@ -29,9 +30,9 @@ module.exports = withMT ({
     },
     plugins: [
       require('daisyui'),
-      function({ addVariant }) {
-        addVariant('not-last', '&:not(:last-child)');
-      },
     ],
+    // daisyui: {
+    //   themes: ['light', 'dark'], 
+    // },
 });
 

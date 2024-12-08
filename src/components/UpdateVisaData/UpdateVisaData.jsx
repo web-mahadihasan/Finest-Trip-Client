@@ -1,16 +1,23 @@
-import { Button, Checkbox, Option, Select } from "@material-tailwind/react";
+import { Button, Checkbox} from "@material-tailwind/react";
 import logo from "../../assets/logo1.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuth } from "../../provider/AuthProvider";
+import Select from 'react-select'
 
 const UpdateVisaData = ({prevVisaData, onUpdateVisaInfo}) => {
         const {user} = useAuth()
         const [formData, setFormData] = useState({
-            visaType: "",
             requiredDocuments: [],
         });
-        // console.log(prevVisaData)
-
+        
+        const options = [
+            { value: 'Tourist visa', label: 'Tourist visa' },
+            { value: 'Student visa', label: 'Student visa' },
+            { value: 'Official visa', label: 'Official visa' },
+            { value: 'Business visa', label: 'Business visa' },
+            { value: 'Worker visa', label: 'Worker visa' },
+            { value: 'Visitor visa', label: 'Visitor visa' }
+        ]
         const documentOptions = [
             "Valid passport",
             "Visa application form",
@@ -18,8 +25,17 @@ const UpdateVisaData = ({prevVisaData, onUpdateVisaInfo}) => {
             "Financial proof",
             "Letter of invitation (if applicable)"
         ];
-        const visaTypes = ["Tourist visa", "Student visa", "Official visa", "Business visa", "Worker visa"];
-      
+        const [selectedValue, setSelectedValue] = useState(options[0]);
+
+        useEffect(() =>  {
+            if(prevVisaData.visaType){
+                setSelectedValue({label:prevVisaData.visaType, value:prevVisaData.visaType})
+            }
+            if(prevVisaData.requiredDocuments){
+                requiredDocuments: prevVisaData.requiredDocuments
+            }
+        }, [prevVisaData.visaType])
+        
         // Handle requirements doc
         const handleRequirementDoc = (document) => {
             setFormData((prev) => {
@@ -30,16 +46,11 @@ const UpdateVisaData = ({prevVisaData, onUpdateVisaInfo}) => {
             return { ...prev, requiredDocuments: updatedDocuments };
             });
         };
-            //   Handle form input 
-        const handleInputChange = (e) => {
-            const { name, value } = e.target;
-            setFormData((prev) => ({ ...prev, [name]: value }));
-        };
+
         const handleApplicationForm = (e) =>  {
             e.preventDefault()
             const form = e.target;
             const data = new FormData(form);
-            const visaTitle = data.get("visaTitle");
             const countryImage = data.get("countryImage")
             const countryName = data.get("countryName")
             const processingTime = data.get("processingTime")
@@ -48,8 +59,11 @@ const UpdateVisaData = ({prevVisaData, onUpdateVisaInfo}) => {
             const visaFee = data.get("visaFee")
             const validity = data.get("validity")
             const applicationMethod = data.get("applicationMethod")
+            const visaType = selectedValue;
+            const updatedAt = new Date()
+            
             // console.log(visaTitle, countryName)
-            const updateData = {...formData, visaTitle, countryImage, countryName, processingTime, description, ageRestriction, visaFee, validity, applicationMethod, userEmail:user.email, userName:user.displayName}
+            const updateData = {...formData, updatedAt, countryImage, countryName, visaType,  processingTime, description, ageRestriction, visaFee, validity, applicationMethod, userEmail:user.email, userName:user.displayName}
             
             onUpdateVisaInfo(updateData, prevVisaData._id)
 
@@ -71,15 +85,6 @@ const UpdateVisaData = ({prevVisaData, onUpdateVisaInfo}) => {
             <div className="max-w-2xl mx-auto my-10">
             <form onSubmit={handleApplicationForm} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {/* Visa Title */}
-                    <div className="col-span-2">
-                    <label className="block text-[13px] mb-1 font-rubik font-medium text-[#5d5b58]">
-                        Visa Title
-                    </label>
-                    <input id="visa-title" type="text" name="visaTitle" defaultValue={prevVisaData?.visaTitle}
-                    placeholder="Electronic Visa For Individuals..."  required
-                    className="w-full h-10 px-4 font-jost text-base transition-all border rounded outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 autofill:bg-white focus:border-primary-light focus:outline-none bg-white bg-opacity-90" />
-                    </div>
                     {/* Country Image */}
                     <div>
                     <label className="block text-[13px] mb-1 font-rubik font-medium text-[#5d5b58]">
@@ -97,7 +102,7 @@ const UpdateVisaData = ({prevVisaData, onUpdateVisaInfo}) => {
                     </div>
 
                     {/* Visa Type */}
-                    <div>
+                    {/* <div>
                     <label className="block text-[13px] mb-1 font-rubik font-medium text-[#5d5b58]">
                             Visa Type
                     </label>
@@ -107,6 +112,17 @@ const UpdateVisaData = ({prevVisaData, onUpdateVisaInfo}) => {
                                 // onChange={(val) => setValue(val)
                             ))}
                         </Select>
+                    </div> */}
+                    <div>
+                        <label className="block text-[13px] mb-1 font-rubik font-medium text-[#5d5b58]">
+                            Visa Type
+                        </label>
+                        <Select options={options} 
+                            name="visaType" 
+                            value={selectedValue}
+                            onChange={(value) => setSelectedValue(value)}
+                            // placeholder="Select a visa type"
+                        />
                     </div>
 
                     {/* Processing time */}

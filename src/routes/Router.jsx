@@ -21,7 +21,7 @@ const Router = createBrowserRouter([
                 path: "/",
                 element: <Home/>,
                 loader: async () =>  {
-                    const visaRes = await fetch("http://localhost:3000/visas");
+                    const visaRes = await fetch("http://localhost:3000/lasted-visa");
                     const lastedVisa = await visaRes.json()
 
                     const categoryRes = await fetch("/category.json")

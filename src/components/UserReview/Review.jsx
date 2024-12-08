@@ -42,7 +42,7 @@ const DisplayProject = ({reviewData}) =>  {
           <ul className="whitespace-no-wrap flex-no-wrap [backface-visibility: hidden] [transform-style: preserve-3d] [touch-action: pan-Y] [will-change: transform] relative flex w-full overflow-hidden p-0">
             {
                 reviewData?.map(review =>  
-                    <div className="border min-h-[310px] bg-white/85 rounded-md border-gray-200 shadow-md p-6 flex flex-col">
+                    <div key={review.id} className="border min-h-[310px] bg-white/85 rounded-md border-gray-200 shadow-md p-6 flex flex-col">
                         <div className="flex items-center 6 mb-4 gap-2 justify-center">
                             <div className="rating">
                                 <input type="radio" name="rating-1" disabled className="mask mask-star bg-orange-500" />

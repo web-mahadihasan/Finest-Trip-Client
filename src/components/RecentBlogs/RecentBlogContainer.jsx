@@ -26,7 +26,7 @@ const RecentBlogContainer = ({blogsData}) => {
                 {/* Right Blogs  */}
                 <div className="space-y-4 h-full flex flex-col justify-between mb-6">
                     {
-                        blogsData?.slice(1, 3).map(blog =>  <RightBlogs key={blog} blog={blog}/>)
+                        blogsData?.slice(1, 3).map(blog =>  <RightBlogs key={blog.id} blog={blog}/>)
                     }
                     {/* <RightBlogs/> */}
                 </div>

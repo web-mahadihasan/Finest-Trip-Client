@@ -9,10 +9,13 @@ import MobileMenuSidebar from "../MobileMenuSidebar/MobileMenuSidebar";
 import { LuSunMoon } from "react-icons/lu";
 import { BsMoon } from "react-icons/bs";
 import appsSvg from "../../assets/app.svg"
+import { useState } from "react";
+
 
 const Nav = () => {
     const {user} = useAuth();
-    const {setOpenMenu} = useAppContext();
+    const {setOpenMenu, setTheme, darkModeHandler} = useAppContext();
+    // const [darkTheme, setDarkTheme] = useState(false)
     const navLinks = [
         { "path": "/", "element": "Home" },
         { "path": "/all-visa", "element": "All Visas" },
@@ -20,6 +23,17 @@ const Nav = () => {
         { "path": "/my-added-visa", "element": "My Added Visa" },
         { "path": "/my-visa-application", "element": "Visa Applications" }
       ]
+
+    // const toggleTheme = () => {
+    //     // setDarkTheme(!darkTheme)
+    //     // console.log(theme)
+    //     // if(darkTheme ===   true){
+    //     //     setTheme('dark')
+    //     // }else{
+    //     //     setTheme('light')
+    //     // }
+    //     setTheme((prevTheme) => (prevTheme ===  'light' ? 'dark' : 'light'));
+    //   };
             
     return (
         <div className=" w-full border-b border-base-100 shadow-md bg-white z-50 backdrop-blur-2xl">
@@ -47,7 +61,7 @@ const Nav = () => {
 
                     {/* Theme control  */}
                     <div>
-                    <button className="border-x px-2 border-base-300">
+                    <button onClick={darkModeHandler} className="border-x px-2 border-base-300">
                         <label className="swap swap-rotate p-2 border border-transparent hover:border-gray-500 duration-500 rounded-full hover:bg-base-300 ">
                             <input type="checkbox" className="theme-controller" value="synthwave" />
                             {/* sun icon */}

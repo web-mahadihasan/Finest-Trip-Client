@@ -1,23 +1,21 @@
 import { Button, Radio } from "@material-tailwind/react";
 import { useState } from "react";
 import {  LiaSortNumericDownSolid, LiaSortNumericUpAltSolid } from "react-icons/lia";
+import { useLocation } from "react-router";
 
 
 const AsideToolBar = ({handleSearch, handleVisaTypeFilter, handleSortByPrice}) => {
-    const [selectedOption, setSelectedOption] = useState(null)
     const [searchText, setSearchText] = useState("")
-
-    const hanldeVisaTypeFilter = e => {
-      setSelectedOption(e.target.value)
+    const {pathname} = useLocation()
+    const handleFilter = (e) => {
+        const query = e.target.value
+        handleVisaTypeFilter(query);
     }
-    const handleSliderChange = (value) => {
-        // setPriceRange(value); 
-        console.log("Selected Value:", value); 
-      };
-  
+    // lg:grid grid-cols-2 gap-3 xl:grid-cols-1 
+    // lg:col-span-2 xl:col-span-1
     return (
-        <div className="w-full lg:grid grid-cols-2 gap-3 xl:grid-cols-1">
-            <div className="border bg-base-100 shadow p-6 rounded w-full lg:col-span-2 xl:col-span-1">
+        <div className={`w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ${pathname ===  "/all-visa" ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-16" : "xl:my-0 xl:grid-cols-1"}`}>
+            <div className="border bg-base-100 shadow p-6 rounded w-full">
                 <h3 className="text-lg font-medium font-rubik text-titleBlack">Search by Country name</h3>
                 <div className="relative my-2">
                     <input onChange={(e) =>  setSearchText(e.target.value)}
@@ -31,36 +29,25 @@ const AsideToolBar = ({handleSearch, handleVisaTypeFilter, handleSortByPrice}) =
                 </div>
                 <Button onClick={() => {handleSearch(searchText)}} className="bg-primary font-rubik font-medium text-sm rounded tracking-wide hover:bg-primary-dark duration-300">Search</Button>
             </div>
-            <div className="bg-base-100 shadow p-6 my-4 lg:my-0 border lg:flex-1">
+            <div className="bg-base-100 shadow p-6 lg:my-0 border lg:flex-1">
                 <h3 className="text-lg font-medium font-rubik text-titleBlack">Filter by Visa Type</h3>
                 <div>
-                <div className="flex gap-1 flex-col font-jost text-lg">
-                    <Radio onClick={(e) =>  handleVisaTypeFilter(e.target.value)} name="type" label="Tourist visa" value="Tourist visa" ripple={true} />
-                    <Radio onClick={(e) =>  handleVisaTypeFilter(e.target.value)} name="type" label="Student visa" value="Student visa" ripple={false} />
-                    <Radio onClick={(e) =>  handleVisaTypeFilter(e.target.value)} name="type" label="Official visa" value="Official visa" ripple={false} />
-                    <Radio onClick={(e) =>  handleVisaTypeFilter(e.target.value)} name="type" label="Business visa" value="Business visa" ripple={false} />
-                    <Radio onClick={(e) =>  handleVisaTypeFilter(e.target.value)} name="type" label="Worker visa" value="Worker visa" ripple={false} />
+                <div className={`font-jost text-lg ${pathname ===  "/all-visa"? "flex flex-wrap": "flex gap-1 flex-wrap xl:flex-col xl:flex-nowrap"}`}>
+                    <Radio onClick={handleFilter} name="type" label="All Visa" value="All Visa" ripple={true} />
+                    <Radio onClick={handleFilter} name="type" label="Tourist visa" value="Tourist visa" ripple={true} />
+                    <Radio onClick={handleFilter} name="type" label="Student visa" value="Student visa" ripple={false} />
+                    <Radio onClick={handleFilter} name="type" label="Official visa" value="Official visa" ripple={false} />
+                    <Radio onClick={handleFilter} name="type" label="Business visa" value="Business visa" ripple={false} />
+                    <Radio onClick={handleFilter} name="type" label="Worker visa" value="Worker visa" ripple={false} />
+                    <Radio onClick={handleFilter} name="type" label="Visitor visa" value="Visitor visa" ripple={false} />
                 </div>
                 </div>
             </div>
             <div className="bg-base-100 shadow p-6 my-4 lg:my-0 border lg:flex-1">
                 <h3 className="text-lg font-medium font-rubik text-titleBlack">Sort by Price </h3>
                 <div className="my-4 font-rubik px-2">
-                    <button className="flex items-center gap-1 p-2 border border-primary px-4 rounded bg-base-200 border-dashed font-jost">Price Low to High <LiaSortNumericDownSolid  size={18}/> </button>
-                    <button className="flex items-center gap-1">Price Low to High <LiaSortNumericUpAltSolid size={18} /> </button>
-                    {/* <Slider
-                        defaultValue={50}
-                        min={200}
-                        step={500}
-                        max={2700}
-                        graduated
-                        progress
-                        className="tex-lg"
-                        onChange={handleSliderChange}
-                        renderMark={mark => {                        
-                            return mark;
-                        }}
-                    /> */}
+                    <button onClick={() => handleSortByPrice("accending")} className="flex items-center gap-1 p-2 border border-primary px-4 rounded bg-base-200 border-dashed font-jost">Price Low to High <LiaSortNumericDownSolid  size={18}/> </button>
+                    <button onClick={() => handleSortByPrice("descending")} className="flex items-center gap-1 p-2 border border-primary px-4 rounded bg-base-200 border-dashed font-jost mt-2">Price Low to High <LiaSortNumericUpAltSolid size={18} /> </button>
                 </div>
             </div>
         </div>
