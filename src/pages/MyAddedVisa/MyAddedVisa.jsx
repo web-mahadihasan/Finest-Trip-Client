@@ -74,7 +74,7 @@ const MyAddedVisa = () => {
   };
   const handleUpdateBtn = (updateId) => {
     updateRef.current.showModal();
-    const filterVisa = loadedAddedVisa.find((prevD) => prevD._id === updateId);
+    const filterVisa = visaAddedByUser.find((prevD) => prevD._id === updateId);
     setUpdateVisaData(filterVisa);
   };
   const handleUpdateInfoBtn = (updateData, id) => {

@@ -102,17 +102,7 @@ const UpdateVisaData = ({prevVisaData, onUpdateVisaInfo}) => {
                     </div>
 
                     {/* Visa Type */}
-                    {/* <div>
-                    <label className="block text-[13px] mb-1 font-rubik font-medium text-[#5d5b58]">
-                            Visa Type
-                    </label>
-                    <Select onChange={(val) =>  setFormData(prev =>  ({ ...prev, visaType: val }))} label="Select one" required value={formData.visaType} name="visaType" className="bg-white bg-opacity-90">
-                            {visaTypes.map((type) => (
-                                <Option key={type} value={type} className="my-1 font-jost text-base">{type}</Option>
-                                // onChange={(val) => setValue(val)
-                            ))}
-                        </Select>
-                    </div> */}
+            
                     <div>
                         <label className="block text-[13px] mb-1 font-rubik font-medium text-[#5d5b58]">
                             Visa Type
