@@ -58,11 +58,11 @@ const AllVisa = () => {
             <PageBanner bgImg="https://i.ibb.co.com/2jrnj6r/section-5.png" title="See All Visa" path="all-visa"/>
             
             {/* All visa  */}
-            <div className="w-11/12 mx-auto px-4">
-                <aside className="">
+            <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-24 gap-6">
+                <aside className="md:col-span-2 lg:col-span-1">
                     <AsideToolBar handleSearch={handleSearch} handleVisaTypeFilter={handleVisaTypeFilter} handleSortByPrice={handleSortByPrice}/>
                 </aside>
-                <div className="md:col-span-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 h-fit my-24">
+                <div className="md:col-span-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5 h-fit">
                     {
                         queryVisa.length > 0 ?  queryVisa.map(visa =>  <VisaCard key={visa._id} visa={visa}/>) : (<h3 className="col-span-2 text-3xl font-rubik font-medium text-red-600">No Visa Data found in your query. Try another </h3> )
                         

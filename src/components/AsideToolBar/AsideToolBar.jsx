@@ -14,7 +14,7 @@ const AsideToolBar = ({handleSearch, handleVisaTypeFilter, handleSortByPrice}) =
     // lg:grid grid-cols-2 gap-3 xl:grid-cols-1 
     // lg:col-span-2 xl:col-span-1
     return (
-        <div className={`w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ${pathname ===  "/all-visa" ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-16" : "xl:my-0 xl:grid-cols-1"}`}>
+        <div className={`w-full grid grid-cols-1`}>
             <div className="border bg-base-100 shadow p-6 rounded w-full">
                 <h3 className="text-lg font-medium font-rubik text-titleBlack">Search by Country name</h3>
                 <div className="relative my-2">
@@ -29,10 +29,10 @@ const AsideToolBar = ({handleSearch, handleVisaTypeFilter, handleSortByPrice}) =
                 </div>
                 <Button onClick={() => {handleSearch(searchText)}} className="bg-primary font-rubik font-medium text-sm rounded tracking-wide hover:bg-primary-dark duration-300">Search</Button>
             </div>
-            <div className="bg-base-100 shadow p-6 lg:my-0 border lg:flex-1">
+            <div className="bg-base-100 shadow p-6 border my-4">
                 <h3 className="text-lg font-medium font-rubik text-titleBlack">Filter by Visa Type</h3>
                 <div>
-                <div className={`font-jost text-lg ${pathname ===  "/all-visa"? "flex flex-wrap": "flex gap-1 flex-wrap xl:flex-col xl:flex-nowrap"}`}>
+                <div className={`font-jost text-lg ${pathname ===  "/all-visa"? "flex flex-wrap gap-2": "flex gap-2 flex-wrap xl:flex-col xl:flex-nowrap"}`}>
                     <Radio onClick={handleFilter} name="type" label="All Visa" value="All Visa" ripple={true} />
                     <Radio onClick={handleFilter} name="type" label="Tourist visa" value="Tourist visa" ripple={true} />
                     <Radio onClick={handleFilter} name="type" label="Student visa" value="Student visa" ripple={false} />
@@ -43,7 +43,7 @@ const AsideToolBar = ({handleSearch, handleVisaTypeFilter, handleSortByPrice}) =
                 </div>
                 </div>
             </div>
-            <div className="bg-base-100 shadow p-6 my-4 lg:my-0 border lg:flex-1">
+            <div className="bg-base-100 shadow p-6 my-4 lg:my-0 border ">
                 <h3 className="text-lg font-medium font-rubik text-titleBlack">Sort by Price </h3>
                 <div className="my-4 font-rubik px-2">
                     <button onClick={() => handleSortByPrice("accending")} className="flex items-center gap-1 p-2 border border-primary px-4 rounded bg-base-200 border-dashed font-jost">Price Low to High <LiaSortNumericDownSolid  size={18}/> </button>
