@@ -46,15 +46,15 @@ const Banner = () => {
           <ul className="w-full whitespace-no-wrap flex-no-wrap [backface-visibility: hidden] [transform-style: preserve-3d] [touch-action: pan-Y] [will-change: transform] relative flex w-full overflow-hidden p-0">
             
 
-            <li className="border bg-gray-100 min-h-[680px] w-full">
+            <li className="border bg-gray-100 min-h-[600px] w-full">
               <Slide1/>
             </li>
 
-            <li className="border bg-gray-100 min-h-[680px] w-full">
+            <li className="border bg-gray-100 min-h-[600px] w-full">
               <Slide2/>
             </li>
 
-            <li className="border bg-gray-100 min-h-[680px] w-full">
+            <li className="border bg-gray-100 min-h-[600px] w-full">
               <Slide3/>
             </li>
             

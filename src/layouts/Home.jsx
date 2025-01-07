@@ -39,7 +39,7 @@ const Home = () => {
             </section>
 
             {/* Visa Card  */}
-            <section className="container mx-auto px-4 md:px-0 mt-16 mb-24">
+            <section className="container mx-auto px-4 md:px-0 mt-5 mb-16">
                 <div className="flex items-center justify-between">
                     <div className="w-40 hidden md:flex">
                         <Lottie animationData={lottie4}/>
@@ -47,7 +47,7 @@ const Home = () => {
                     <div>
                         <p className="flex items-center gap-2 justify-center">
                         <span><img src={frame} alt="Visa category icon" className=""/></span>
-                        <span data-aos="zoom-out-up" className="uppercase font-rubik">Our Latesd Visa</span>
+                        <span className="uppercase font-rubik">Our Latesd Visa</span>
                         </p>
                         <h3 data-aos="fade-up" className="text-2xl lg:text-3xl xl:text-4xl font-medium my-4 text-center font-rubik">Check Out the Latest Visa Deals <br /> Excitement Await </h3>
                         <div data-aos="fade-up" className="flex items-center flex-wrap justify-center gap-4 mb-8">
